@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Bar UI</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .search-box {
+        width: 400px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        padding: 15px;
+        position: relative;
+    }
+
+    .input-wrapper {
+        display: flex;
+        align-items: center;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 8px 12px;
+        background: #f9fafb;
+    }
+
+    .input-wrapper input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 14px;
+    }
+
+    .icon {
+        margin-right: 8px;
+        color: #6b7280;
+    }
+
+    .clear {
+        cursor: pointer;
+        color: #9ca3af;
+        font-size: 18px;
+        display: none;
+    }
+
+    .suggestions {
+        margin-top: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid #e5e7eb;
+        display: none;
+    }
+
+    .suggestions div {
+        padding: 10px;
+        background: #fff;
+        cursor: pointer;
+        font-size: 14px;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .suggestions div:hover {
+        background: #f3f4f6;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="search-box">
+    <div class="input-wrapper">
+        <span class="icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search anything...">
+        <span class="clear" id="clearBtn">✕</span>
+    </div>
+
+    <div class="suggestions" id="suggestions"></div>
+</div>
+
+<script>
+const input = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearBtn");
+const suggestionsBox = document.getElementById("suggestions");
+
+// Sample data
+const items = [
+    "HTML Tutorial",
+    "CSS Grid Guide",
+    "JavaScript Basics",
+    "React Components",
+    "Node.js API",
+    "MongoDB Database",
+    "UI Design Tips",
+    "Frontend Projects",
+    "Backend Development",
+    "Full Stack Roadmap"
+];
+
+// Search handler
+input.addEventListener("input", function () {
+    const value = this.value.toLowerCase();
+    suggestionsBox.innerHTML = "";
+
+    if (value.length > 0) {
+        clearBtn.style.display = "inline";
+
+        const filtered = items.filter(item =>
+            item.toLowerCase().includes(value)
+        );
+
+        if (filtered.length > 0) {
+            suggestionsBox.style.display = "block";
+
+            filtered.forEach(item => {
+                const div = document.createElement("div");
+                div.textContent = item;
+                div.onclick = () => {
+                    input.value = item;
+                    suggestionsBox.style.display = "none";
+                };
+                suggestionsBox.appendChild(div);
+            });
+        } else {
+            suggestionsBox.style.display = "none";
+        }
+    } else {
+        clearBtn.style.display = "none";
+        suggestionsBox.style.display = "none";
+    }
+});
+
+// Clear input
+clearBtn.addEventListener("click", () => {
+    input.value = "";
+    clearBtn.style.display = "none";
+    suggestionsBox.style.display = "none";
+});
+</script>
+
+</body>
+</html>
