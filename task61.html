@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Scrollbar</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 200vh; /* just to enable scrolling */
+    }
+
+    /* ===== WebKit Browsers (Chrome, Edge, Safari) ===== */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #3498db;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2c80b4;
+    }
+
+    /* ===== Firefox ===== */
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: #3498db #f1f1f1;
+    }
+
+    .content {
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <h1>Custom Scrollbar Example</h1>
+    <p>Scroll down to see the styled scrollbar.</p>
+  </div>
+</body>
+</html>
