@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Website</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f6fa;
+    color:#111827;
+}
+
+/* Navbar */
+header{
+    background:#111827;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a{
+    color:#cbd5e1;
+    margin-left:15px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* Hero */
+.hero{
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:36px;
+}
+
+.hero p{
+    opacity:0.9;
+    margin-top:10px;
+}
+
+/* Layout */
+.container{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+/* Posts */
+.posts{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+    color:#6b7280;
+}
+
+.read-more{
+    display:inline-block;
+    margin-top:10px;
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Sidebar */
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.box{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.box h3{
+    margin-bottom:10px;
+}
+
+.box ul{
+    list-style:none;
+}
+
+.box ul li{
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#111827;
+    color:#cbd5e1;
+    margin-top:40px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .container{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div><strong>MyBlog</strong></div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Posts</a>
+        <a href="#">Categories</a>
+        <a href="#">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Welcome to My Blog</h1>
+    <p>Learn Web Development, JavaScript, CSS, and more</p>
+</section>
+
+<div class="container">
+
+    <!-- Blog Posts -->
+    <div class="posts">
+
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Learn HTML Basics</h3>
+                <p>Start your web development journey with HTML fundamentals.</p>
+                <a class="read-more" href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="card">
+           
+            <div class="card-content">
+                <h3>CSS Tips & Tricks</h3>
+                <p>Improve your UI skills with modern CSS techniques.</p>
+                <a class="read-more" href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="card">
+           
+            <div class="card-content">
+                <h3>JavaScript Guide</h3>
+                <p>Understand how JavaScript makes websites interactive.</p>
+                <a class="read-more" href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="card">
+           
+            <div class="card-content">
+                <h3>Frontend Roadmap</h3>
+                <p>Step-by-step guide to becoming a frontend developer.</p>
+                <a class="read-more" href="#">Read More →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="box">
+            <h3>Categories</h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Backend</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h3>Recent Posts</h3>
+            <ul>
+                <li>Flexbox Guide</li>
+                <li>Grid Layout Explained</li>
+                <li>JS DOM Basics</li>
+                <li>Responsive Design</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 MyBlog. All rights reserved.
+</footer>
+
+</body>
+</html>
