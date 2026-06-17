@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Table</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    padding: 30px;
+}
+
+.table-container {
+    max-width: 1200px;
+    margin: auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow-x: auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+thead {
+    background: #111827;
+    color: white;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:hover {
+    background: #f9fafb;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: white;
+}
+
+.active {
+    background: #16a34a;
+}
+
+.pending {
+    background: #f59e0b;
+}
+
+.inactive {
+    background: #fb8585;
+}
+
+/* Mobile Card Layout */
+@media (max-width: 768px) {
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    table {
+        min-width: 100%;
+    }
+
+    tr {
+        background: #fff;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    td {
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #374151;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="table-container">
+    <h2>User Management</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td data-label="ID">1</td>
+                <td data-label="Name">smirti</td>
+                <td data-label="Email">smirti1.com</td>
+                <td data-label="Role">Admin</td>
+                <td data-label="Status">
+                    <span class="status active">Active</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="ID">2</td>
+                <td data-label="Name">meera</td>
+                <td data-label="Email">mera@example.com</td>
+                <td data-label="Role">Editor</td>
+                <td data-label="Status">
+                    <span class="status pending">Pending</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td data-label="ID">3</td>
+                <td data-label="Name">agan</td>
+                <td data-label="Email">agan@example.com</td>
+                <td data-label="Role">User</td>
+                <td data-label="Status">
+                    <span class="status inactive">Inactive</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
