@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Feed UI</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* Layout */
+.app{
+    display:grid;
+    grid-template-columns:250px 1fr 250px;
+    gap:15px;
+    max-width:1200px;
+    margin:20px auto;
+    padding:0 10px;
+}
+
+/* Sidebar */
+.sidebar{
+    background:#111827;
+    color:white;
+    padding:20px;
+    border-radius:12px;
+    height:fit-content;
+}
+
+.sidebar h2{
+    margin-bottom:20px;
+}
+
+.sidebar a{
+    display:block;
+    color:#cbd5e1;
+    text-decoration:none;
+    margin:10px 0;
+}
+
+.sidebar a:hover{
+    color:white;
+}
+
+/* Feed */
+.feed{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* Create post */
+.post-box{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.post-box textarea{
+    width:100%;
+    height:70px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    resize:none;
+}
+
+.post-box button{
+    margin-top:10px;
+    padding:10px 15px;
+    border:none;
+    background:#2563eb;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Post card */
+.post{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.user{
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.post img{
+    width:100%;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+/* Actions */
+.actions{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+    font-size:14px;
+    color:#6b7280;
+}
+
+.actions button{
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:#6b7280;
+}
+
+.actions button:hover{
+    color:#2563eb;
+}
+
+/* Right sidebar */
+.right{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    height:fit-content;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.right h3{
+    margin-bottom:10px;
+}
+
+.trend{
+    font-size:14px;
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+}
+
+/* Responsive */
+@media(max-width:900px){
+    .app{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+        <h2>SocialX</h2>
+        <a href="#">Home</a>
+        <a href="#">Explore</a>
+        <a href="#">Notifications</a>
+        <a href="#">Messages</a>
+        <a href="#">Profile</a>
+    </div>
+
+    <!-- Feed -->
+    <div class="feed">
+
+        <!-- Create Post -->
+        <div class="post-box">
+            <textarea id="postText" placeholder="What's happening?"></textarea>
+            <button onclick="addPost()">Post</button>
+        </div>
+
+        <!-- Posts -->
+        <div id="posts">
+
+            <div class="post">
+                <div class="user">Alex</div>
+                <p>Just finished learning frontend development 🚀</p>
+                
+                <div class="actions">
+                    <button onclick="like(this)">👍 Like <span>0</span></button>
+                    <button>💬 Comment</button>
+                    <button>🔁 Share</button>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="user">Sarah</div>
+                <p>Beautiful sunset today 🌅</p>
+                <img src="https://picsum.photos/600/300?2">
+
+                <div class="actions">
+                    <button onclick="like(this)">👍 Like <span>0</span></button>
+                    <button>💬 Comment</button>
+                    <button>🔁 Share</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="right">
+        <h3>Trending 🔥</h3>
+        <div class="trend">#JavaScript</div>
+        <div class="trend">#WebDevelopment</div>
+        <div class="trend">#AI</div>
+        <div class="trend">#Startups</div>
+    </div>
+
+</div>
+
+<script>
+function like(btn){
+    let count = btn.querySelector("span");
+    count.textContent = parseInt(count.textContent) + 1;
+}
+
+function addPost(){
+    let text = document.getElementById("postText").value;
+
+    if(text.trim() === ""){
+        alert("Write something first!");
+        return;
+    }
+
+    let post = document.createElement("div");
+    post.classList.add("post");
+
+    post.innerHTML = `
+        <div class="user">You</div>
+        <p>${text}</p>
+        <div class="actions">
+            <button onclick="like(this)">👍 Like <span>0</span></button>
+            <button>💬 Comment</button>
+            <button>🔁 Share</button>
+        </div>
+    `;
+
+    document.getElementById("posts").prepend(post);
+
+    document.getElementById("postText").value = "";
+}
+</script>
+
+</body>
+</html>
