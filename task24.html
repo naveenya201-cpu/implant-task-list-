@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+/* Profile Header */
+.profile-header{
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:white;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    position:relative;
+}
+
+.avatar{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:4px solid white;
+    object-fit:cover;
+    margin-bottom:15px;
+}
+
+.profile-header h1{
+    margin-bottom:8px;
+}
+
+.profile-header p{
+    opacity:.9;
+}
+
+/* Cards */
+.card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    margin-top:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.info-item{
+    padding:12px;
+    background:#f9fafb;
+    border-radius:8px;
+}
+
+.label{
+    font-size:13px;
+    color:#6b7280;
+    margin-bottom:5px;
+}
+
+.value{
+    font-weight:bold;
+    color:#111827;
+}
+
+/* Stats */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    text-align:center;
+    padding:20px;
+    background:#f9fafb;
+    border-radius:10px;
+}
+
+.stat h3{
+    color:#2563eb;
+    font-size:28px;
+}
+
+.stat p{
+    color:#6b7280;
+    margin-top:5px;
+}
+
+/* Button */
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+    background:#08245f;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.btn:hover{
+    background:#98a3c2;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:500px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .profile-header{
+        padding:25px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <img
+            src="https://i.pravatar.cc/100"
+            alt="Profile"
+            class="avatar"
+        >
+
+        <h1>agan</h1>
+        <p>Frontend Developer</p>
+
+        <a href="#" class="btn">Edit Profile</a>
+    </div>
+
+    <!-- User Information -->
+    <div class="card">
+        <h2>User Information</h2>
+
+        <div class="info-grid">
+
+            <div class="info-item">
+                <div class="label">Email</div>
+                <div class="value">agan@example.com</div>
+            </div>
+
+            <div class="info-item">
+                <div class="label">Phone</div>
+                <div class="value">+1 234 567 890</div>
+            </div>
+
+            <div class="info-item">
+                <div class="label">Location</div>
+                <div class="value">india</div>
+            </div>
+
+            <div class="info-item">
+                <div class="label">Website</div>
+                <div class="value">www.agan1234.com</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="card">
+        <h2>Statistics</h2>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>120</h3>
+                <p>Projects</p>
+            </div>
+
+            <div class="stat">
+                <h3>3.5K</h3>
+                <p>Followers</p>
+            </div>
+
+            <div class="stat">
+                <h3>980</h3>
+                <p>Following</p>
+            </div>
+
+            <div class="stat">
+                <h3>250</h3>
+                <p>Reviews</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- About -->
+    <div class="card">
+        <h2>About Me</h2>
+
+        <p style="line-height:1.7; color:#4b5563;">
+          Trained in software languages like html,css,javascript 
+          looking forward to work with real time clients who need websites and interface designing
+          skilled in python
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
