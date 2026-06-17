@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz App</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#7897c6;
+    padding:20px;
+}
+
+.quiz-container{
+    width:100%;
+    max-width:600px;
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.quiz-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    font-weight:bold;
+    color:#111827;
+}
+
+/* Question */
+.question{
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+/* Options */
+.option{
+    background:#f3f4f6;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.option:hover{
+    background:#e5e7eb;
+}
+
+.option.selected{
+    background:#2563eb;
+    color:white;
+}
+
+/* Button */
+.btn{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:8px;
+    background:#111827;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#ef8523;
+}
+
+/* Result */
+.result{
+    text-align:center;
+}
+
+.result h2{
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:24px;
+    font-weight:bold;
+    color:#2563eb;
+}
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+
+    <div id="quiz">
+
+        <div class="quiz-header">
+            <span id="progress">Question 1</span>
+            <span id="score">Score: 0</span>
+        </div>
+
+        <div class="question" id="question">
+            Question text
+        </div>
+
+        <div id="options"></div>
+
+        <button class="btn" onclick="nextQuestion()">
+            Next
+        </button>
+
+    </div>
+
+    <div id="result" class="result" style="display:none;">
+        <h2>Quiz Completed 🎉</h2>
+        <p class="score" id="finalScore"></p>
+        <button class="btn" onclick="restartQuiz()">Restart</button>
+    </div>
+
+</div>
+
+<script>
+const quizData = [
+    {
+        question: "What does air mostly contains of?",
+        options: [
+            "Hydrogen",
+            "nitrogen",
+            "oxygen",
+            "helium"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which language runs in the browser?",
+        options: ["Python", "Java", "C++", "JavaScript"],
+        answer: 3
+    },
+    {
+        question: "What does CSS stand for?",
+        options: [
+            "Color Style Sheet",
+            "Cascading Style Sheets",
+            "Computer Style System",
+            "Creative Styling Syntax"
+        ],
+        answer: 1
+    },
+    {
+        question: "Which HTML tag is used for JavaScript?",
+        options: ["<js>", "<script>", "<javascript>", "<code>"],
+        answer: 1
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let selectedOption = null;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const progressEl = document.getElementById("progress");
+const scoreEl = document.getElementById("score");
+const quizEl = document.getElementById("quiz");
+const resultEl = document.getElementById("result");
+const finalScoreEl = document.getElementById("finalScore");
+
+function loadQuestion(){
+
+    const q = quizData[currentQuestion];
+
+    questionEl.textContent = q.question;
+
+    optionsEl.innerHTML = "";
+
+    q.options.forEach((option, index)=>{
+
+        const div = document.createElement("div");
+        div.classList.add("option");
+        div.textContent = option;
+
+        div.onclick = () => {
+            document.querySelectorAll(".option")
+                .forEach(opt => opt.classList.remove("selected"));
+
+            div.classList.add("selected");
+            selectedOption = index;
+        };
+
+        optionsEl.appendChild(div);
+    });
+
+    progressEl.textContent =
+        `Question ${currentQuestion + 1} of ${quizData.length}`;
+
+    scoreEl.textContent = `Score: ${score}`;
+
+    selectedOption = null;
+}
+
+function nextQuestion(){
+
+    if(selectedOption === null) return;
+
+    if(selectedOption === quizData[currentQuestion].answer){
+        score++;
+    }
+
+    currentQuestion++;
+
+    if(currentQuestion < quizData.length){
+        loadQuestion();
+    }else{
+        showResult();
+    }
+}
+
+function showResult(){
+    quizEl.style.display = "none";
+    resultEl.style.display = "block";
+
+    finalScoreEl.textContent =
+        `You scored ${score} / ${quizData.length}`;
+}
+
+function restartQuiz(){
+    currentQuestion = 0;
+    score = 0;
+
+    quizEl.style.display = "block";
+    resultEl.style.display = "none";
+
+    loadQuestion();
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
