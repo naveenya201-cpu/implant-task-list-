@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton Loading</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Skeleton base */
+    .skeleton {
+      background: #e2e2e2;
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Shimmer animation */
+    .skeleton::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -150px;
+      height: 100%;
+      width: 150px;
+      background: linear-gradient(90deg, transparent, #ffffff80, transparent);
+      animation: shimmer 1.2s infinite;
+    }
+
+    @keyframes shimmer {
+      100% {
+        transform: translateX(450px);
+      }
+    }
+
+    .title {
+      height: 20px;
+      width: 70%;
+      margin-bottom: 10px;
+    }
+
+    .line {
+      height: 12px;
+      margin: 8px 0;
+      width: 100%;
+    }
+
+    .line.short {
+      width: 60%;
+    }
+
+    /* Real content */
+    .content {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- Skeleton -->
+  <div id="skeleton">
+    <div class="skeleton title"></div>
+    <div class="skeleton line"></div>
+    <div class="skeleton line"></div>
+    <div class="skeleton line short"></div>
+  </div>
+
+  <!-- Real Content -->
+  <div class="content" id="content">
+    <h3>🌄 Beautiful Nature</h3>
+    <img src="https://picsum.photos/400/200" alt="image">
+    <p>This content is loaded after skeleton screen disappears.</p>
+  </div>
+
+</div>
+
+<script>
+  // simulate loading delay
+  setTimeout(() => {
+    document.getElementById("skeleton").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  }, 3000);
+</script>
+
+</body>
+</html>
