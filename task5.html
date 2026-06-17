@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sticky Header</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Sticky Header */
+    header {
+        position: sticky;
+        top: 0;
+        background: #7cc99c;
+        color: rgb(28, 2, 2);
+        padding: 15px 20px;
+        z-index: 1000;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .menu {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .menu a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .menu a:hover {
+        color: #061990;
+    }
+
+    /* Demo content */
+    .content {
+        padding: 20px;
+    }
+
+    .section {
+        height: 100vh;
+        padding-top: 20px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menu {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">MySite</div>
+
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="content">
+    <div class="section" style="background:#ee9a9a;">
+        <h2>pink</h2>
+    </div>
+
+    <div class="section" style="background:#7d287d;">
+        <h2><i>purple</i></h2>
+    </div>
+
+    <div class="section" style="background:#6a04de;">
+        <h2>blue</h2>
+    </div>
+</div>
+
+</body>
+</html>
