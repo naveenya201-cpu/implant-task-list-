@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Buttons</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 50px;
+    }
+
+    /* Base button */
+    .btn {
+      position: relative;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      color: white;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Primary button */
+    .btn-primary {
+      background: #3498db;
+    }
+
+    .btn-primary:hover {
+      background: #2c80b4;
+      transform: scale(1.05);
+    }
+
+    /* Success button */
+    .btn-success {
+      background: #2ecc71;
+    }
+
+    .btn-success:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Danger button */
+    .btn-danger {
+      background: #e74c3c;
+    }
+
+    .btn-danger:hover {
+      animation: shake 0.3s;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(3px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Ripple effect */
+    .btn::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.4);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      border-radius: 50%;
+      transition: transform 0.5s;
+    }
+
+    .btn:active::after {
+      transform: translate(-50%, -50%) scale(2);
+      opacity: 0;
+      transition: 0s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="btn btn-primary">Primary</button>
+  <button class="btn btn-success">Success</button>
+  <button class="btn btn-danger">Danger</button>
+
+</body>
+</html>
