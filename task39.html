@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banking Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* Layout */
+.dashboard{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+    background:#111827;
+    color:white;
+    padding:20px;
+}
+
+.sidebar h2{
+    margin-bottom:20px;
+}
+
+.sidebar a{
+    display:block;
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:10px 0;
+}
+
+.sidebar a:hover{
+    color:white;
+}
+
+/* Main */
+.main{
+    padding:20px;
+}
+
+/* Top cards */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card h3{
+    color:#6b7280;
+    font-size:14px;
+}
+
+.card p{
+    font-size:22px;
+    margin-top:5px;
+    font-weight:bold;
+}
+
+/* Actions */
+.actions{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.actions button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    color:white;
+}
+
+.send{background:#2563eb;}
+.receive{background:#16a34a;}
+.bill{background:#f59e0b;}
+
+/* Transactions */
+.transactions{
+    margin-top:20px;
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.transaction{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+}
+
+.credit{color:#16a34a;}
+.debit{color:#dc2626;}
+
+/* Responsive */
+@media(max-width:768px){
+    .dashboard{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        display:flex;
+        justify-content:space-around;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>MyBank</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Accounts</a>
+        <a href="#">Transfers</a>
+        <a href="#">Bills</a>
+        <a href="#">Settings</a>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <h1>Welcome Back 👋</h1>
+
+        <!-- Cards -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Account Balance</h3>
+                <p id="balance">₹50,000</p>
+            </div>
+
+            <div class="card">
+                <h3>Monthly Income</h3>
+                <p>₹25,000</p>
+            </div>
+
+            <div class="card">
+                <h3>Expenses</h3>
+                <p>₹12,000</p>
+            </div>
+
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+            <button class="send" onclick="sendMoney()">Send Money</button>
+            <button class="receive">Receive</button>
+            <button class="bill">Pay Bills</button>
+        </div>
+
+        <!-- Transactions -->
+        <div class="transactions">
+            <h3>Recent Transactions</h3>
+
+            <div class="transaction">
+                <span>Amazon Purchase</span>
+                <span class="debit">-₹1,200</span>
+            </div>
+
+            <div class="transaction">
+                <span>Salary Credit</span>
+                <span class="credit">+₹25,000</span>
+            </div>
+
+            <div class="transaction">
+                <span>Electricity Bill</span>
+                <span class="debit">-₹1,500</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+let balance = 50000;
+
+function sendMoney(){
+    let amount = prompt("Enter amount to send:");
+
+    amount = parseInt(amount);
+
+    if(isNaN(amount) || amount <= 0){
+        alert("Invalid amount");
+        return;
+    }
+
+    if(amount > balance){
+        alert("Insufficient balance");
+        return;
+    }
+
+    balance -= amount;
+
+    document.getElementById("balance")
+        .textContent = "₹" + balance;
+
+    alert("₹" + amount + " sent successfully!");
+}
+</script>
+
+</body>
+</html>
