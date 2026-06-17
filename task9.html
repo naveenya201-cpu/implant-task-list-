@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Accordion</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #f5f5f5;
+    }
+
+    .faq-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .faq-item {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .faq-question {
+        width: 100%;
+        padding: 18px 20px;
+        border: none;
+        background: #fff;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .faq-icon {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+    }
+
+    .faq-answer p {
+        margin: 0;
+        padding: 0 0 18px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 200px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-container">
+
+    <div class="faq-item">
+        <button class="faq-question">
+            What is your return policy?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                We accept returns within 30 days of purchase provided the item is unused and in its original packaging.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            How long does shipping take?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                Standard shipping typically takes 3–7 business days depending on your location.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            Do you offer customer support?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                Yes, our support team is available Monday through Friday via email and live chat.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const button = item.querySelector('.faq-question');
+
+    button.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        faqItems.forEach(faq => faq.classList.remove('active'));
+
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
