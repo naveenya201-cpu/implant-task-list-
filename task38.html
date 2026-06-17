@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare Website</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* Navbar */
+header{
+    background:#0f172a;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a{
+    color:#cbd5e1;
+    margin-left:15px;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* Hero */
+.hero{
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+/* Search */
+.search-box{
+    margin-top:20px;
+}
+
+.search-box input{
+    padding:10px;
+    width:250px;
+    border:none;
+    border-radius:6px;
+    outline:none;
+}
+
+.search-box button{
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    background:#0f172a;
+    color:white;
+    cursor:pointer;
+}
+
+/* Layout */
+.container{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+/* Doctor grid */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    text-align:center;
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.special{
+    color:#6b7280;
+    font-size:14px;
+}
+
+.btn{
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    border:none;
+    background:#2563eb;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+/* Booking form */
+.booking{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-top:30px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.booking h2{
+    margin-bottom:15px;
+}
+
+.booking input,
+.booking select{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border:1px solid #ddd;
+    border-radius:6px;
+}
+
+/* Popup */
+.popup{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#22c55e;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .search-box input{
+        width:180px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div><strong>HealthCare+</strong></div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Doctors</a>
+        <a href="#">Appointments</a>
+        <a href="#">Services</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Find Best Doctors Near You 🏥</h1>
+    <p>Book appointments instantly with trusted specialists</p>
+
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search doctor or specialization">
+        <button onclick="searchDoctor()">Search</button>
+    </div>
+</section>
+
+<div class="container">
+
+    <h2>Available Doctors</h2>
+
+    <div class="grid" id="doctorGrid">
+
+        <div class="card" data-name="cardiologist">
+          
+            <div class="card-content">
+                <h3>Dr.Lovely</h3>
+                <p class="special">Cardiologist</p>
+                <button class="btn" onclick="selectDoctor('Dr. John Smith')">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-name="dermatologist">
+          
+            <div class="card-content">
+                <h3>Dr. lia</h3>
+                <p class="special">Dermatologist</p>
+                <button class="btn" onclick="selectDoctor('Dr. Sarah Lee')">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-name="dentist">
+          
+            <div class="card-content">
+                <h3>Dr. renny</h3>
+                <p class="special">Dentist</p>
+                <button class="btn" onclick="selectDoctor('Dr. Alex Roy')">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Booking Form -->
+    <div class="booking">
+        <h2>Book Appointment</h2>
+
+        <input type="text" id="doctorName" placeholder="Doctor Name" readonly>
+        <input type="date" id="date">
+        <input type="time" id="time">
+
+        <select>
+            <option>General Consultation</option>
+            <option>Follow-up</option>
+            <option>Emergency</option>
+        </select>
+
+        <button class="btn" onclick="book()">Confirm Appointment</button>
+    </div>
+
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    Appointment Booked Successfully 🎉
+</div>
+
+<script>
+function selectDoctor(name){
+    document.getElementById("doctorName").value = name;
+}
+
+function book(){
+    const name = document.getElementById("doctorName").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    if(!name || !date || !time){
+        alert("Please fill all details!");
+        return;
+    }
+
+    document.getElementById("popup").style.display = "block";
+
+    setTimeout(()=>{
+        document.getElementById("popup").style.display = "none";
+    },3000);
+}
+
+function searchDoctor(){
+    const query =
+        document.getElementById("search").value.toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(card=>{
+        const name =
+            card.getAttribute("data-name");
+
+        if(name.includes(query)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
