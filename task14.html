@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard UI</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        background: #f4f6f9;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        background: #111827;
+        color: #fff;
+        padding: 20px;
+        position: fixed;
+        height: 100%;
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .menu a {
+        display: block;
+        color: #cbd5e1;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        transition: 0.3s;
+    }
+
+    .menu a:hover {
+        background: #1f2937;
+        color: #fff;
+    }
+
+    /* Main Content */
+    .main {
+        margin-left: 250px;
+        width: 100%;
+    }
+
+    /* Topbar */
+    .topbar {
+        background: #fff;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .topbar h2 {
+        font-size: 18px;
+        color: #111827;
+    }
+
+    .user {
+        background: #2563eb;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+
+    /* Cards */
+    .content {
+        padding: 20px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 8px;
+    }
+
+    .card p {
+        font-size: 22px;
+        font-weight: bold;
+        color: #111827;
+    }
+
+    /* Table Section */
+    .table-container {
+        margin-top: 20px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e5e7eb;
+        font-size: 14px;
+    }
+
+    th {
+        background: #f9fafb;
+        color: #374151;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 200px;
+        }
+
+        .main {
+            margin-left: 200px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .sidebar {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .main {
+            margin-left: 0;
+        }
+
+        body {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo">MyDashboard</div>
+    <div class="menu">
+        <a href="#">Dashboard</a>
+        <a href="#">Users</a>
+        <a href="#">Analytics</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+    </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+        <h2>Dashboard Overview</h2>
+        <div class="user">Admin</div>
+    </div>
+
+    <div class="content">
+
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card">
+                <h3>Total Users</h3>
+                <p>12,450</p>
+            </div>
+
+            <div class="card">
+                <h3>Revenue</h3>
+                <p>$48,200</p>
+            </div>
+
+            <div class="card">
+                <h3>Orders</h3>
+                <p>1,320</p>
+            </div>
+
+            <div class="card">
+                <h3>Growth</h3>
+                <p>24%</p>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <h3 style="margin-bottom:10px;">Recent Activity</h3>
+            <table>
+                <tr>
+                    <th>User</th>
+                    <th>Action</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Arjun</td>
+                    <td>Login</td>
+                    <td>Success</td>
+                </tr>
+                <tr>
+                    <td>Priya</td>
+                    <td>Purchase</td>
+                    <td>Completed</td>
+                </tr>
+                <tr>
+                    <td>Rahul</td>
+                    <td>Signup</td>
+                    <td>New</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
