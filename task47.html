@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.container{
+    text-align:center;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+/* Timer box */
+.timer{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.box{
+    background:rgba(0,0,0,0.3);
+    padding:20px;
+    border-radius:12px;
+    min-width:80px;
+}
+
+.box span{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.box p{
+    margin-top:5px;
+    font-size:14px;
+}
+
+/* Message */
+#message{
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>New Year Countdown 🎉</h1>
+
+    <div class="timer">
+        <div class="box">
+            <span id="days">00</span>
+            <p>Days</p>
+        </div>
+
+        <div class="box">
+            <span id="hours">00</span>
+            <p>Hours</p>
+        </div>
+
+        <div class="box">
+            <span id="minutes">00</span>
+            <p>Minutes</p>
+        </div>
+
+        <div class="box">
+            <span id="seconds">00</span>
+            <p>Seconds</p>
+        </div>
+    </div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+// Set target date (change this)
+const targetDate = new Date("Jan 1, 2027 00:00:00").getTime();
+
+function updateCountdown(){
+
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if(diff <= 0){
+        document.getElementById("message").innerText =
+        "🎉 Countdown Finished!";
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+}
+
+// Update every second
+setInterval(updateCountdown, 1000);
+updateCountdown();
+</script>
+
+</body>
+</html>
