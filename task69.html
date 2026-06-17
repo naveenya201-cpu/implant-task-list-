@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mega Menu</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #2c3e50;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .menu-item {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .menu-item a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    /* Mega menu box */
+    .mega {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 600px;
+      background: white;
+      color: black;
+      display: none;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      z-index: 100;
+    }
+
+    .mega h4 {
+      margin-top: 0;
+    }
+
+    .mega-columns {
+      display: flex;
+      gap: 30px;
+    }
+
+    .mega-columns div {
+      flex: 1;
+    }
+
+    .mega a {
+      color: black;
+      text-decoration: none;
+      display: block;
+      margin: 5px 0;
+    }
+
+    .menu-item:hover .mega {
+      display: block;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        background: #34495e;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .mega {
+        position: relative;
+        width: 100%;
+        box-shadow: none;
+      }
+
+      .menu-item:hover .mega {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="logo">MegaSite</div>
+
+    <div class="menu" id="menu">
+
+      <div class="menu-item">
+        <a href="#">Products</a>
+
+        <div class="mega">
+          <h4>Our Products</h4>
+          <div class="mega-columns">
+            <div>
+              <h5>Category 1</h5>
+              <a href="#">Item 1</a>
+              <a href="#">Item 2</a>
+              <a href="#">Item 3</a>
+            </div>
+
+            <div>
+              <h5>Category 2</h5>
+              <a href="#">Item 4</a>
+              <a href="#">Item 5</a>
+              <a href="#">Item 6</a>
+            </div>
+
+            <div>
+              <h5>Category 3</h5>
+              <a href="#">Item 7</a>
+              <a href="#">Item 8</a>
+              <a href="#">Item 9</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item"><a href="#">About</a></div>
+      <div class="menu-item"><a href="#">Contact</a></div>
+
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
