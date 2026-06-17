@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonial Carousel</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f7fb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .carousel {
+        width: 500px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+        position: relative;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .testimonial {
+        display: none;
+        animation: fade 0.5s ease-in-out;
+    }
+
+    .testimonial.active {
+        display: block;
+    }
+
+    @keyframes fade {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .quote {
+        font-size: 18px;
+        color: #444;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .name {
+        font-weight: bold;
+        color: #111;
+    }
+
+    .role {
+        font-size: 14px;
+        color: #777;
+    }
+
+    .controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        padding: 0 10px;
+    }
+
+    .btn {
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn:hover {
+        background: rgba(0,0,0,0.8);
+    }
+
+    .dots {
+        margin-top: 15px;
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 4px;
+        display: inline-block;
+        border-radius: 50%;
+        background: #ccc;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        background: #333;
+    }
+</style>
+</head>
+<body>
+
+<div class="carousel">
+
+    <div class="testimonial active">
+        <p class="quote">“This product completely changed the way we work. Highly recommended!”</p>
+        <div class="name">Arjun Kumar</div>
+        <div class="role">Software Engineer</div>
+    </div>
+
+    <div class="testimonial">
+        <p class="quote">“Excellent support and very easy to use. Great experience overall.”</p>
+        <div class="name">Priya Sharma</div>
+        <div class="role">UI/UX Designer</div>
+    </div>
+
+    <div class="testimonial">
+        <p class="quote">“Fast, reliable, and beautifully designed. Perfect for our business needs.”</p>
+        <div class="name">Rahul Verma</div>
+        <div class="role">Entrepreneur</div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="prevSlide()">&#10094;</button>
+        <button class="btn" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <div class="dots" id="dots"></div>
+</div>
+
+<script>
+let index = 0;
+const testimonials = document.querySelectorAll(".testimonial");
+const dotsContainer = document.getElementById("dots");
+
+// Create dots
+testimonials.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    dot.addEventListener("click", () => showSlide(i));
+    dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(i) {
+    testimonials[index].classList.remove("active");
+    dots[index].classList.remove("active");
+
+    index = i;
+
+    testimonials[index].classList.add("active");
+    dots[index].classList.add("active");
+}
+
+function nextSlide() {
+    showSlide((index + 1) % testimonials.length);
+}
+
+function prevSlide() {
+    showSlide((index - 1 + testimonials.length) % testimonials.length);
+}
+
+// Auto slide
+setInterval(nextSlide, 4000);
+
+// init
+showSlide(0);
+</script>
+
+</body>
+</html>
