@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Player UI</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#1f2937,#111827);
+}
+
+/* Player */
+.player{
+    width:320px;
+    background:#0f172a;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Album Art */
+.cover{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    margin:auto;
+    overflow:hidden;
+    border:5px solid #2563eb;
+    animation:rotate 8s linear infinite;
+    animation-play-state:paused;
+}
+
+.cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Rotate animation */
+@keyframes rotate{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+/* Song Info */
+.title{
+    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.artist{
+    font-size:14px;
+    color:#94a3b8;
+    margin-bottom:15px;
+}
+
+/* Controls */
+.controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-top:15px;
+}
+
+button{
+    border:none;
+    background:#1e293b;
+    color:white;
+    padding:12px;
+    border-radius:50%;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+/* Play button bigger */
+.play{
+    width:55px;
+    height:55px;
+}
+
+/* Progress */
+.progress-container{
+    width:100%;
+    height:6px;
+    background:#334155;
+    border-radius:5px;
+    margin-top:20px;
+    cursor:pointer;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:#2563eb;
+    border-radius:5px;
+}
+</style>
+</head>
+<body>
+
+<div class="player">
+
+    <!-- Audio -->
+    <audio id="audio">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+    </audio>
+
+    <!-- Cover -->
+    <div class="cover" id="cover">
+        <img src="https://picsum.photos/100" alt="cover">
+    </div>
+
+    <div class="title" id="title">relaxing music 101</div>
+    <div class="artist">jake</div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button onclick="prevSong()">⏮</button>
+        <button class="play" onclick="togglePlay()" id="playBtn">▶</button>
+        <button onclick="nextSong()">⏭</button>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-container" onclick="setProgress(event)">
+        <div class="progress" id="progress"></div>
+    </div>
+
+</div>
+
+<script>
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const progress = document.getElementById("progress");
+const cover = document.getElementById("cover");
+
+let isPlaying = false;
+
+/* Play / Pause */
+function togglePlay(){
+    if(isPlaying){
+        audio.pause();
+        playBtn.textContent = "play";
+        cover.style.animationPlayState = "paused";
+    }else{
+        audio.play();
+        playBtn.textContent = "stop";
+        cover.style.animationPlayState = "running";
+    }
+    isPlaying = !isPlaying;
+}
+
+/* Progress update */
+audio.addEventListener("timeupdate", ()=>{
+    const percent =
+        (audio.currentTime / audio.duration) * 100;
+    progress.style.width = percent + "%";
+});
+
+/* Click to seek */
+function setProgress(e){
+    const width = e.currentTarget.clientWidth;
+    const clickX = e.offsetX;
+    audio.currentTime =
+        (clickX / width) * audio.duration;
+}
+
+/* Dummy next/prev */
+function nextSong(){
+    alert("Next song (add playlist logic)");
+}
+
+function prevSong(){
+    alert("Previous song (add playlist logic)");
+}
+</script>
+
+</body>
+</html>
