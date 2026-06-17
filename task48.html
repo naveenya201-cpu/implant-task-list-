@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Typing Animation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#111827,#1f2937);
+    color:white;
+}
+
+.container{
+    text-align:center;
+}
+
+h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+/* Typing text */
+.typing{
+    font-size:24px;
+    color:#38bdf8;
+    font-weight:bold;
+}
+
+/* Cursor */
+.cursor{
+    display:inline-block;
+    width:2px;
+    background:white;
+    margin-left:5px;
+    animation:blink 7s infinite;
+}
+
+@keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Hello 👋</h1>
+    <div class="typing">
+        <span id="text"></span>
+        <span class="cursor"></span>
+    </div>
+</div>
+
+<script>
+// Words to type
+const words = [
+    "Frontend Developer",
+    "UI Designer",
+    "JavaScript Enthusiast",
+    "Freelancer"
+];
+
+let i = 0;        // word index
+let j = 0;        // letter index
+let isDeleting = false;
+
+function typeEffect(){
+
+    const currentWord = words[i];
+
+    if(!isDeleting){
+        document.getElementById("text").innerHTML =
+        currentWord.substring(0, j+1);
+        j++;
+
+        if(j === currentWord.length){
+            isDeleting = true;
+            setTimeout(typeEffect, 10000);
+            return;
+        }
+    }
+    else{
+        document.getElementById("text").innerHTML =
+        currentWord.substring(0, j-1);
+        j--;
+
+        if(j === 0){
+            isDeleting = false;
+            i = (i + 1) % words.length;
+        }
+    }
+
+    setTimeout(typeEffect, isDeleting ? 50 : 100);
+}
+
+typeEffect();
+</script>
+
+</body>
+</html>
