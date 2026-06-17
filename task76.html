@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Toggle</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    /* Toggle switch */
+    .toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: relative;
+      width: 60px;
+      height: 30px;
+    }
+
+    .switch input {
+      display: none;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      background: #ccc;
+      border-radius: 30px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: 0.3s;
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    input:checked + .slider {
+      background: #3498db;
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(30px);
+    }
+
+    /* Pricing cards */
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .price {
+      font-size: 28px;
+      margin: 10px 0;
+      color: #3498db;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>💰 Pricing Plans</h2>
+<p>Choose Monthly or Yearly billing</p>
+
+<!-- Toggle -->
+<div class="toggle">
+  <span>Monthly</span>
+
+  <label class="switch">
+    <input type="checkbox" id="toggle" onclick="updatePrices()">
+    <span class="slider"></span>
+  </label>
+
+  <span>Yearly</span>
+</div>
+
+<!-- Pricing Cards -->
+<div class="container">
+
+  <div class="card">
+    <h3>Basic</h3>
+    <div class="price" id="basic">$10</div>
+    <button>Buy</button>
+  </div>
+
+  <div class="card">
+    <h3>Pro</h3>
+    <div class="price" id="pro">$20</div>
+    <button>Buy</button>
+  </div>
+
+  <div class="card">
+    <h3>Premium</h3>
+    <div class="price" id="premium">$30</div>
+    <button>Buy</button>
+  </div>
+
+</div>
+
+<script>
+  function updatePrices() {
+    const yearly = document.getElementById("toggle").checked;
+
+    if (yearly) {
+      document.getElementById("basic").innerText = "$100";
+      document.getElementById("pro").innerText = "$200";
+      document.getElementById("premium").innerText = "$300";
+    } else {
+      document.getElementById("basic").innerText = "$10";
+      document.getElementById("pro").innerText = "$20";
+      document.getElementById("premium").innerText = "$30";
+    }
+  }
+</script>
+
+</body>
+</html>
