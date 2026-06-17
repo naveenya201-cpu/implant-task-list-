@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism UI</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      /* Background for glass effect */
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+    }
+
+    /* Glass card */
+    .glass {
+      width: 320px;
+      padding: 25px;
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+      color: white;
+      text-align: center;
+    }
+
+    .glass h2 {
+      margin-bottom: 10px;
+    }
+
+    .glass p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.3);
+      color: white;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.5);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="glass">
+    <h2>🪟 Glass Card</h2>
+    <p>This is a glassmorphism UI design with blur effect and transparency.</p>
+    <button class="btn">Click Me</button>
+  </div>
+
+</body>
+</html>
