@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi Step Form</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+
+    .form-box {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .next {
+      background: #3498db;
+      color: white;
+    }
+
+    .prev {
+      background: #ccc;
+    }
+
+    .progress {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .dot {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #ddd;
+      text-align: center;
+      line-height: 25px;
+      font-size: 12px;
+    }
+
+    .dot.active {
+      background: #3498db;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="form-box">
+
+  <div class="progress">
+    <div class="dot active">1</div>
+    <div class="dot">2</div>
+    <div class="dot">3</div>
+  </div>
+
+  <form id="multiForm">
+
+    <!-- Step 1 -->
+    <div class="step active">
+      <h3>Step 1</h3>
+      <input type="text" placeholder="First Name">
+      <input type="text" placeholder="Last Name">
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <h3>Step 2</h3>
+      <input type="email" placeholder="Email">
+      <input type="tel" placeholder="Phone">
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <h3>Step 3</h3>
+      <input type="password" placeholder="Password">
+      <input type="password" placeholder="Confirm Password">
+    </div>
+
+    <div class="buttons">
+      <button type="button" class="prev" onclick="changeStep(-1)">Previous</button>
+      <button type="button" class="next" onclick="changeStep(1)">Next</button>
+    </div>
+
+  </form>
+
+</div>
+
+<script>
+  let currentStep = 0;
+  const steps = document.querySelectorAll(".step");
+  const dots = document.querySelectorAll(".dot");
+
+  function showStep(n) {
+    steps.forEach(step => step.classList.remove("active"));
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    steps[n].classList.add("active");
+    dots[n].classList.add("active");
+  }
+
+  function changeStep(n) {
+    currentStep = currentStep + n;
+
+    if (currentStep < 0) currentStep = 0;
+    if (currentStep >= steps.length) currentStep = steps.length - 1;
+
+    showStep(currentStep);
+  }
+</script>
+
+</body>
+</html>
