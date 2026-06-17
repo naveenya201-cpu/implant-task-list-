@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Hover Effects</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:30px;
+}
+
+/* Grid */
+.container{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* Common image box */
+.box{
+    position:relative;
+    overflow:hidden;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.box img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    transition:0.5s ease;
+}
+
+/* Text overlay */
+.overlay{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:15px;
+    color:white;
+    background:rgba(0,0,0,0.5);
+    transform:translateY(100%);
+    transition:0.4s ease;
+}
+
+/* 1. Zoom effect */
+.zoom:hover img{
+    transform:scale(1.2);
+}
+
+/* 2. Fade overlay */
+.fade:hover img{
+    transform:scale(1.1);
+}
+
+.fade:hover .overlay{
+    transform:translateY(0);
+}
+
+/* 3. Dark overlay */
+.dark::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0);
+    transition:0.4s;
+}
+
+.dark:hover::after{
+    background:rgba(0,0,0,0.4);
+}
+
+.dark:hover img{
+    transform:scale(1.1);
+}
+
+/* 4. Slide text up */
+.slide .overlay{
+    transform:translateY(100%);
+}
+
+.slide:hover .overlay{
+    transform:translateY(0);
+}
+
+.slide:hover img{
+    transform:scale(1.1);
+}
+
+/* Titles */
+h3{
+    font-size:16px;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;margin-bottom:20px;">Image Hover Effects 🎨</h2>
+
+<div class="container">
+
+    <!-- Zoom Effect -->
+    <div class="box zoom">
+        <img src="https://picsum.photos/400/300?1">
+    </div>
+
+    <!-- Fade Overlay -->
+    <div class="box fade">
+        <img src="https://picsum.photos/400/300?2">
+        <div class="overlay">
+            <h3>Bpicture 2</h3>
+        </div>
+    </div>
+
+    <!-- Dark Overlay -->
+    <div class="box dark">
+        <img src="https://picsum.photos/400/300?3">
+    </div>
+
+    <!-- Slide Effect -->
+    <div class="box slide">
+        <img src="https://picsum.photos/400/300?4">
+        <div class="overlay">
+            <h3>picture 4</h3>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
