@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Charts</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    /* Responsive container */
+    .chart-container {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>📈 Responsive Line Chart</h2>
+  <div class="chart-container">
+    <canvas id="lineChart"></canvas>
+  </div>
+
+  <h2>📊 Responsive Bar Chart</h2>
+  <div class="chart-container">
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <script>
+    // Line Chart
+    new Chart(document.getElementById("lineChart"), {
+      type: "line",
+      data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        datasets: [{
+          label: "Sales",
+          data: [10, 25, 18, 30, 22, 40],
+          borderColor: "#3498db",
+          backgroundColor: "rgba(52,152,219,0.2)",
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Bar Chart
+    new Chart(document.getElementById("barChart"), {
+      type: "bar",
+      data: {
+        labels: ["A", "B", "C", "D", "E"],
+        datasets: [{
+          label: "Users",
+          data: [12, 19, 3, 5, 2],
+          backgroundColor: "#2ecc71"
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  </script>
+
+</body>
+</html>
