@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Hero Section</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: white;
+      min-height: 100vh;
+      gap: 40px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .primary {
+      background: #3498db;
+      color: white;
+    }
+
+    .secondary {
+      background: white;
+      color: #3498db;
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* 📱 Responsive design */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .hero-text h1 {
+        font-size: 32px;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<section class="hero">
+
+  <div class="hero-text">
+    <h1>Build Modern Websites Faster 🚀</h1>
+    <p>Create responsive and beautiful UI designs using simple HTML, CSS, and JavaScript.</p>
+
+    <div class="buttons">
+      <button class="btn primary">Get Started</button>
+      <button class="btn secondary">Learn More</button>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="https://picsum.photos/400/300" alt="Picture">
+  </div>
+
+</section>
+
+</body>
+</html>
