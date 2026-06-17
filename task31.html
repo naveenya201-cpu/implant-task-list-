@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player UI</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+}
+
+/* Player container */
+.player{
+    width:90%;
+    max-width:700px;
+    background:#111827;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Video */
+video{
+    width:100%;
+    display:block;
+    background:black;
+}
+
+/* Controls */
+.controls{
+    display:flex;
+    flex-direction:column;
+    padding:12px;
+    gap:10px;
+}
+
+/* Progress bar */
+.progress-container{
+    width:100%;
+    height:6px;
+    background:#334155;
+    border-radius:5px;
+    cursor:pointer;
+    position:relative;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:#3b82f6;
+    border-radius:5px;
+}
+
+/* Buttons row */
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.left-controls,
+.right-controls{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+button{
+    border:none;
+    background:#1e293b;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    background:#3b82f6;
+}
+
+.time{
+    color:#cbd5e1;
+    font-size:13px;
+}
+
+/* Fullscreen style */
+.player.fullscreen{
+    width:100%;
+    height:100%;
+    border-radius:0;
+}
+</style>
+</head>
+<body>
+
+<div class="player" id="player">
+
+    <video id="video">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    </video>
+
+    <div class="controls">
+
+        <!-- Progress -->
+        <div class="progress-container" onclick="seekVideo(event)">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+
+            <div class="left-controls">
+                <button onclick="togglePlay()" id="playBtn">▶</button>
+                <span class="time" id="time">0:00 / 0:00</span>
+            </div>
+
+            <div class="right-controls">
+                <button onclick="toggleMute()">🔊</button>
+                <button onclick="toggleFullscreen()">⛶</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+const video = document.getElementById("video");
+const progress = document.getElementById("progress");
+const playBtn = document.getElementById("playBtn");
+const timeDisplay = document.getElementById("time");
+const player = document.getElementById("player");
+
+let isPlaying = false;
+
+/* Play / Pause */
+function togglePlay(){
+    if(isPlaying){
+        video.pause();
+        playBtn.textContent = "▶";
+    }else{
+        video.play();
+        playBtn.textContent = "⏸";
+    }
+    isPlaying = !isPlaying;
+}
+
+/* Update progress bar */
+video.addEventListener("timeupdate", ()=>{
+    const percent =
+        (video.currentTime / video.duration) * 100;
+
+    progress.style.width = percent + "%";
+
+    timeDisplay.textContent =
+        formatTime(video.currentTime) + " / " +
+        formatTime(video.duration);
+});
+
+/* Format time */
+function formatTime(sec){
+    if(isNaN(sec)) return "0:00";
+
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${s < 10 ? "0" : ""}${s}`;
+}
+
+/* Seek video */
+function seekVideo(e){
+    const width = e.currentTarget.clientWidth;
+    const clickX = e.offsetX;
+
+    video.currentTime =
+        (clickX / width) * video.duration;
+}
+
+/* Mute toggle */
+function toggleMute(){
+    video.muted = !video.muted;
+}
+
+/* Fullscreen */
+function toggleFullscreen(){
+    if(!document.fullscreenElement){
+        player.requestFullscreen();
+    }else{
+        document.exitFullscreen();
+    }
+}
+</script>
+
+</body>
+</html>
