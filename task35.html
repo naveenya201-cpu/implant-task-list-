@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Courses</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* Navbar */
+header{
+    background:#111827;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:#cbd5e1;
+    margin:0 10px;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:white;
+}
+
+.search-box input{
+    padding:8px;
+    border-radius:6px;
+    border:none;
+    outline:none;
+}
+
+/* Hero */
+.hero{
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:36px;
+}
+
+/* Layout */
+.container{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:3fr 1fr;
+    gap:20px;
+}
+
+/* Filters */
+.filters{
+    margin-bottom:20px;
+}
+
+.filters button{
+    margin-right:10px;
+    padding:8px 12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#e5e7eb;
+}
+
+.filters button.active{
+    background:#2563eb;
+    color:white;
+}
+
+/* Courses grid */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card h3{
+    margin-bottom:5px;
+}
+
+.category{
+    font-size:12px;
+    color:#6b7280;
+    margin-bottom:10px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:8px 12px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+}
+
+/* Sidebar */
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.box{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.box h3{
+    margin-bottom:10px;
+}
+
+.box ul{
+    list-style:none;
+}
+
+.box ul li{
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+    .container{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div><strong>LearnHub</strong></div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Courses</a>
+        <a href="#">Teachers</a>
+        <a href="#">About</a>
+    </nav>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search courses...">
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Learn New Skills Online 🎓</h1>
+    <p>Upgrade your career with top courses</p>
+</section>
+
+<div class="container">
+
+    <!-- Main -->
+    <div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <button class="active" onclick="filterCourses('all')">All</button>
+            <button onclick="filterCourses('web')">Web Dev</button>
+            <button onclick="filterCourses('design')">Design</button>
+            <button onclick="filterCourses('data')">Data Science</button>
+        </div>
+
+        <!-- Courses -->
+        <div class="grid" id="courseGrid">
+
+            <div class="card" data-category="web">
+               
+                <div class="card-content">
+                    <h3>HTML & CSS Mastery</h3>
+                    <div class="category">Web Development</div>
+                    <a href="#" class="btn">Enroll</a>
+                </div>
+            </div>
+
+            <div class="card" data-category="web">
+               
+                <div class="card-content">
+                    <h3>JavaScript Basics</h3>
+                    <div class="category">Web Development</div>
+                    <a href="#" class="btn">Enroll</a>
+                </div>
+            </div>
+
+            <div class="card" data-category="design">
+              
+                <div class="card-content">
+                    <h3>UI/UX Design</h3>
+                    <div class="category">Design</div>
+                    <a href="#" class="btn">Enroll</a>
+                </div>
+            </div>
+
+            <div class="card" data-category="data">
+               
+                <div class="card-content">
+                    <h3>Data Science Intro</h3>
+                    <div class="category">Data Science</div>
+                    <a href="#" class="btn">Enroll</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="box">
+            <h3>Popular Courses</h3>
+            <ul>
+                <li>Full Stack Development</li>
+                <li>React JS Masterclass</li>
+                <li>Python for Beginners</li>
+                <li>Machine Learning</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h3>Categories</h3>
+            <ul>
+                <li>Web Development</li>
+                <li>Design</li>
+                <li>Data Science</li>
+                <li>Marketing</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function filterCourses(category){
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    const buttons =
+        document.querySelectorAll(".filters button");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+
+    event.target.classList.add("active");
+
+    cards.forEach(card => {
+
+        if(category === "all" ||
+           card.dataset.category === category){
+
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
