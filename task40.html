@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fintech Landing Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f8fafc;
+    color:#111827;
+}
+
+/* Navbar */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background:#0f172a;
+    color:white;
+}
+
+nav a{
+    color:#cbd5e1;
+    margin-left:15px;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* Hero */
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:60px 20px;
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+    color:white;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    max-width:500px;
+}
+
+.hero-text h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.hero-text p{
+    margin-bottom:20px;
+}
+
+.hero button{
+    padding:12px 18px;
+    border:none;
+    background:#111827;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Features */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:40px 20px;
+}
+
+.feature{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.feature h3{
+    margin-bottom:10px;
+}
+
+/* Stats */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    text-align:center;
+    background:#111827;
+    color:white;
+    padding:40px 20px;
+}
+
+.stat h2{
+    font-size:28px;
+}
+
+/* Pricing */
+.pricing{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:40px 20px;
+}
+
+.plan{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.plan h2{
+    margin-bottom:10px;
+}
+
+.price{
+    font-size:24px;
+    color:#16a34a;
+    margin:10px 0;
+}
+
+.plan button{
+    padding:10px;
+    width:100%;
+    border:none;
+    background:#2563eb;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.plan button:hover{
+    background:#1d4ed8;
+}
+
+/* Footer */
+footer{
+    background:#0f172a;
+    color:#cbd5e1;
+    text-align:center;
+    padding:20px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .hero{
+        text-align:center;
+        justify-content:center;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div><strong>FinX</strong></div>
+    <nav>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">API</a>
+        <a href="#">Docs</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Modern Payments Infrastructure for Businesses</h1>
+        <p>Accept payments, send payouts, and manage your finances with ease.</p>
+        <button onclick="getStarted()">Get Started</button>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+
+    <div class="feature">
+        <h3>Fast Payments</h3>
+        <p>Process transactions in milliseconds with high reliability.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Secure API</h3>
+        <p>Bank-grade security with encrypted transactions.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Global Support</h3>
+        <p>Accept payments from over 100+ countries.</p>
+    </div>
+
+</section>
+
+<!-- Stats -->
+<section class="stats">
+
+    <div class="stat">
+        <h2>10M+</h2>
+        <p>Transactions</p>
+    </div>
+
+    <div class="stat">
+        <h2>50K+</h2>
+        <p>Businesses</p>
+    </div>
+
+    <div class="stat">
+        <h2>99.9%</h2>
+        <p>Uptime</p>
+    </div>
+
+</section>
+
+<!-- Pricing -->
+<section class="pricing">
+
+    <div class="plan">
+        <h2>Starter</h2>
+        <div class="price">₹0</div>
+        <p>Basic features for small businesses</p>
+        <button>Select</button>
+    </div>
+
+    <div class="plan">
+        <h2>Pro</h2>
+        <div class="price">₹999/mo</div>
+        <p>Advanced tools & analytics</p>
+        <button>Select</button>
+    </div>
+
+    <div class="plan">
+        <h2>Enterprise</h2>
+        <div class="price">Custom</div>
+        <p>Full-scale business solutions</p>
+        <button>Select</button>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 FinX. All rights reserved.
+</footer>
+
+<script>
+function getStarted(){
+    alert("Redirecting to signup page 🚀");
+}
+</script>
+
+</body>
+</html>
