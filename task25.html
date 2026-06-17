@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notification Popup</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #437ace;
+}
+
+/* Button */
+.show-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #e776b8;
+    color: rgb(166, 141, 141);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    min-width: 320px;
+    background: rgb(230, 136, 136);
+    border-left: 5px solid #2a4f37;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    transform: translateX(120%);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon {
+    font-size: 22px;
+    color: #16a34a;
+}
+
+.message h4 {
+    margin-bottom: 4px;
+    color: #111827;
+}
+
+.message p {
+    font-size: 14px;
+    color: #22407e;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .toast {
+        left: 15px;
+        right: 15px;
+        min-width: auto;
+    }
+}
+</style>
+</head>
+<body>
+
+<button class="show-btn" onclick="showToast()">
+    Show Notification
+</button>
+
+<div class="toast" id="toast">
+    <div class="toast-content">
+        <div class="icon">✓</div>
+
+        <div class="message">
+            <h4>facebook</h4>
+            <p>hi there
+                You got some notifications!!!</p>
+        </div>
+    </div>
+
+    <button class="close-btn" onclick="hideToast()">
+        ×
+    </button>
+</div>
+
+<script>
+const toast = document.getElementById('toast');
+let timer;
+
+function showToast() {
+    toast.classList.add('show');
+
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+        hideToast();
+    }, 3000);
+}
+
+function hideToast() {
+    toast.classList.remove('show');
+}
+</script>
+
+</body>
+</html>
