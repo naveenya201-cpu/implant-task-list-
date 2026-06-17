@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neumorphism UI</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #e0e5ec;
+      font-family: Arial;
+    }
+
+    /* Neumorphic card */
+    .card {
+      width: 300px;
+      padding: 25px;
+      border-radius: 20px;
+      background: #e0e5ec;
+
+      box-shadow: 
+        8px 8px 16px #a3b1c6,
+        -8px -8px 16px #ffffff;
+
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Neumorphic button */
+    .btn {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      background: #e0e5ec;
+      cursor: pointer;
+      font-size: 14px;
+
+      box-shadow: 
+        5px 5px 10px #a3b1c6,
+        -5px -5px 10px #ffffff;
+
+      transition: all 0.2s ease;
+    }
+
+    /* Pressed effect */
+    .btn:active {
+      box-shadow: 
+        inset 5px 5px 10px #a3b1c6,
+        inset -5px -5px 10px #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h2>🧊 Neumorphism</h2>
+    <p>Soft UI design using shadows and light effects.</p>
+    <button class="btn">Click Me</button>
+  </div>
+
+</body>
+</html>
