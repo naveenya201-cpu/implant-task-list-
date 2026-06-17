@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Gallery</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* Header */
+header{
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    margin-bottom:10px;
+}
+
+/* Filters */
+.filters{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.filters button{
+    padding:8px 12px;
+    margin:5px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#e5e7eb;
+}
+
+.filters button.active{
+    background:#2563eb;
+    color:white;
+}
+
+/* Gallery grid */
+.gallery{
+    max-width:1200px;
+    margin:auto;
+    padding:10px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.item{
+    position:relative;
+    overflow:hidden;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.item img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    transition:0.3s;
+}
+
+.item:hover img{
+    transform:scale(1.1);
+}
+
+/* Lightbox */
+.lightbox{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+/* Responsive */
+@media(max-width:600px){
+    .item img{
+        height:150px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Image Gallery 🖼️</h1>
+    <p>Responsive Grid Gallery</p>
+</header>
+
+<!-- Filters -->
+<div class="filters">
+    <button class="active" onclick="filterGallery('all')">All</button>
+    <button onclick="filterGallery('nature')">Nature</button>
+    <button onclick="filterGallery('city')">City</button>
+    <button onclick="filterGallery('people')">People</button>
+</div>
+
+<!-- Gallery -->
+<div class="gallery" id="gallery">
+
+    <div class="item" data-category="nature">
+        <img src="https://picsum.photos/400/300?nature1" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="item" data-category="city">
+        <img src="https://picsum.photos/400/300?city1" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="item" data-category="people">
+        <img src="https://picsum.photos/400/300?people1" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="item" data-category="nature">
+        <img src="https://picsum.photos/400/300?nature2" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="item" data-category="city">
+        <img src="https://picsum.photos/400/300?city2" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="item" data-category="people">
+        <img src="https://picsum.photos/400/300?people2" onclick="openLightbox(this.src)">
+    </div>
+
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg">
+</div>
+
+<script>
+function filterGallery(category){
+
+    let items = document.querySelectorAll(".item");
+    let buttons = document.querySelectorAll(".filters button");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+
+    items.forEach(item =>{
+
+        let cat = item.getAttribute("data-category");
+
+        if(category === "all" || cat === category){
+            item.style.display = "block";
+        }else{
+            item.style.display = "none";
+        }
+    });
+}
+
+function openLightbox(src){
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightboxImg").src = src;
+}
+
+function closeLightbox(){
+    document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+</body>
+</html>
