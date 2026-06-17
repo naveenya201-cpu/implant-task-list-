@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Strength Checker</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .bar {
+      height: 10px;
+      width: 100%;
+      background: #ddd;
+      border-radius: 5px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      width: 0%;
+      transition: 0.3s;
+    }
+
+    .text {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>🔐 Password Checker</h2>
+
+  <input type="password" id="password" placeholder="Enter password">
+
+  <div class="bar">
+    <div class="fill" id="fill"></div>
+  </div>
+
+  <div class="text" id="text">Enter password</div>
+</div>
+
+<script>
+  const password = document.getElementById("password");
+  const fill = document.getElementById("fill");
+  const text = document.getElementById("text");
+
+  password.addEventListener("input", function () {
+    const value = password.value;
+    let strength = 0;
+
+    // rules
+    if (value.length >= 6) strength++;
+    if (value.length >= 10) strength++;
+    if (/[A-Z]/.test(value)) strength++;
+    if (/[0-9]/.test(value)) strength++;
+    if (/[^A-Za-z0-9]/.test(value)) strength++;
+
+    // weak
+    if (strength <= 2) {
+      fill.style.width = "33%";
+      fill.style.background = "red";
+      text.innerText = "Weak Password";
+      text.style.color = "red";
+    }
+
+    // medium
+    else if (strength <= 4) {
+      fill.style.width = "66%";
+      fill.style.background = "orange";
+      text.innerText = "Medium Password";
+      text.style.color = "orange";
+    }
+
+    // strong
+    else {
+      fill.style.width = "100%";
+      fill.style.background = "green";
+      text.innerText = "Strong Password";
+      text.style.color = "green";
+    }
+  });
+</script>
+
+</body>
+</html>
