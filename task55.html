@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Tabs</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* Container */
+.container{
+    width:400px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+/* Tabs */
+.tabs{
+    display:flex;
+    background:#111827;
+}
+
+.tabs button{
+    flex:1;
+    padding:12px;
+    border:none;
+    background:transparent;
+    color:#cbd5e1;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.tabs button.active{
+    background:#2563eb;
+    color:white;
+}
+
+/* Content */
+.content{
+    padding:20px;
+    display:none;
+}
+
+.content.active{
+    display:block;
+}
+
+/* Responsive */
+@media(max-width:500px){
+    .container{
+        width:90%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="active" onclick="openTab(event, 'home')">Home</button>
+        <button onclick="openTab(event, 'profile')">Profile</button>
+        <button onclick="openTab(event, 'settings')">Settings</button>
+    </div>
+
+    <!-- Content -->
+    <div id="home" class="content active">
+        <h3>Home</h3>
+        <p>Welcome to the home tab 🏠</p>
+    </div>
+
+    <div id="profile" class="content">
+        <h3>Profile</h3>
+        <p>User profile information 👤</p>
+    </div>
+
+    <div id="settings" class="content">
+        <h3>Settings</h3>
+        <p>Adjust your preferences ⚙️</p>
+    </div>
+
+</div>
+
+<script>
+function openTab(event, tabId){
+
+    // Hide all content
+    let contents = document.querySelectorAll(".content");
+    contents.forEach(c => c.classList.remove("active"));
+
+    // Remove active from buttons
+    let buttons = document.querySelectorAll(".tabs button");
+    buttons.forEach(b => b.classList.remove("active"));
+
+    // Show selected content
+    document.getElementById(tabId).classList.add("active");
+
+    // Set active button
+    event.target.classList.add("active");
+}
+</script>
+
+</body>
+</html>
