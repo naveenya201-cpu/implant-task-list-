@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Bar</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:300px;
+    text-align:center;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+/* Bar background */
+.progress-bar{
+    width:100%;
+    height:20px;
+    background:#e5e7eb;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+
+/* Fill */
+.progress{
+    height:100%;
+    width:0%;
+    background:#2563eb;
+    transition:0.3s;
+}
+
+/* Text */
+#percent{
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+/* Button */
+button{
+    padding:10px 15px;
+    border:none;
+    background:#2563eb;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Loading Progress 📊</h2>
+
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <div id="percent">0%</div>
+
+    <button onclick="startProgress()">Start</button>
+
+</div>
+
+<script>
+
+function startProgress(){
+
+    let progress = document.getElementById("progress");
+    let percent = document.getElementById("percent");
+
+    let value = 0;
+
+    let interval = setInterval(() => {
+
+        if(value >= 100){
+            clearInterval(interval);
+        } else {
+            value++;
+            progress.style.width = value + "%";
+            percent.innerText = value + "%";
+        }
+
+    }, 20);
+}
+
+</script>
+
+</body>
+</html>
