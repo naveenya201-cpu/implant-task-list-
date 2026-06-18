@@ -1,0 +1,85 @@
+// App.js
+import React from "react";
+
+function App() {
+  return (
+    <div style={{ fontFamily: "Arial, sans-serif" }}>
+      {/* Header */}
+      <header
+        style={{
+          background: "#2563eb",
+          color: "white",
+          padding: "20px",
+          textAlign: "center",
+        }}
+      >
+        <h1>My Landing Page</h1>
+        <p>Build amazing websites with React</p>
+      </header>
+
+      {/* Hero Section */}
+      <section
+        style={{
+          textAlign: "center",
+          padding: "60px 20px",
+        }}
+      >
+        <h2>Welcome to Our Website</h2>
+        <p>
+          Create modern, responsive, and fast web applications using React.
+        </p>
+        <button
+          style={{
+            background: "#2563eb",
+            color: "white",
+            border: "none",
+            padding: "12px 24px",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Get Started
+        </button>
+      </section>
+
+       Features 
+      <section
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "20px",
+          padding: "40px",
+        }}
+      >
+        <div>
+          <h3>Fast</h3>
+          <p>Optimized performance.</p>
+        </div>
+
+        <div>
+          <h3>Responsive</h3>
+          <p>Works on all devices.</p>
+        </div>
+
+        <div>
+          <h3>Easy</h3>
+          <p>Simple and clean design.</p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer
+        style={{
+          background: "#111827",
+          color: "white",
+          textAlign: "center",
+          padding: "15px",
+        }}
+      >
+         2026 My Company
+      </footer>
+    </div>
+  );
+}
+
+export default App;
