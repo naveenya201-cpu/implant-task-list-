@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Search Bar UI</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7fb;
+    font-family: Arial, sans-serif;
+  }
+
+  .search-container {
+    position: relative;
+    width: 400px;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 14px 45px 14px 18px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .search-input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 4px 14px rgba(74,144,226,0.2);
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #888;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="search-container">
+  <input type="text" class="search-input" placeholder="Search anything..." />
+  <div class="search-icon">🔍</div>
+</div>
+
+</body>
+</html>
