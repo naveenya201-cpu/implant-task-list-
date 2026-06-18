@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            display:flex;
+            height:100vh;
+        }
+
+        /* Sidebar */
+        .sidebar{
+            width:220px;
+            background:#2c3e50;
+            color:white;
+            padding:20px;
+        }
+
+        .sidebar h2{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        .sidebar ul{
+            list-style:none;
+        }
+
+        .sidebar ul li{
+            padding:12px;
+            cursor:pointer;
+        }
+
+        .sidebar ul li:hover{
+            background:#34495e;
+            border-radius:1000px;
+        }
+
+        /* Main Content */
+        .main-content{
+            flex:1;
+            background:#f4f4f4;
+        }
+
+        /* Header */
+        .header{
+            background:#3498db;
+            color:white;
+            padding:15px;
+            text-align:center;
+        }
+
+        /* Cards */
+        .cards{
+            display:flex;
+            gap:20px;
+            padding:20px;
+        }
+
+        .card{
+            flex:1;
+            background:white;
+            padding:20px;
+            border-radius:8px;
+            box-shadow:0 2px 5px rgba(0,0,0,0.2);
+            text-align:center;
+        }
+
+        /* Content Area */
+        .content{
+            margin:20px;
+            background:white;
+            padding:20px;
+            border-radius:8px;
+            box-shadow:0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li>Home</li>
+            <li>Profile</li>
+            <li>Users</li>
+            <li>Reports</li>
+            <li>Settings</li>
+            <li>Logout</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <div class="header">
+            <h1>Welcome to Dashboard</h1>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Users</h3>
+                <p>120</p>
+            </div>
+
+            <div class="card">
+                <h3>Orders</h3>
+                <p>85</p>
+            </div>
+
+            <div class="card">
+                <h3>Revenue</h3>
+                <p>$5000</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Main Content Area</h2>
+            <p>
+                This section can display charts, tables,
+                reports, notifications, or other dashboard data.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
