@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media UI</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #fafafa;
+}
+
+/* Header */
+header {
+  background: white;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Stories */
+.stories {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  background: white;
+}
+
+.story {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743);
+  margin-right: 10px;
+  flex: 0 0 auto;
+}
+
+/* Post */
+.post {
+  background: white;
+  margin-top: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.post img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.actions {
+  margin-top: 8px;
+}
+
+.like {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Bottom nav */
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  📸 Social App
+</header>
+
+<!-- Stories -->
+<div class="stories">
+  <div class="story"></div>
+  <div class="story"></div>
+  <div class="story"></div>
+  <div class="story"></div>
+  <div class="story"></div>
+</div>
+
+<!-- Feed -->
+<div class="post">
+  <h4>User1</h4>
+  <img src="https://picsum.photos/400/300" alt="">
+  <div class="actions">
+    <span class="like" onclick="toggleLike(this)">🤍</span>
+  </div>
+  <p>Enjoying the day ☀️</p>
+</div>
+
+<div class="post">
+  <h4>User2</h4>
+  <img src="https://picsum.photos/401/300" alt="">
+  <div class="actions">
+    <span class="like" onclick="toggleLike(this)">🤍</span>
+  </div>
+  <p>Travel vibes ✈️</p>
+</div>
+
+<!-- Bottom Nav -->
+<div class="nav">
+  <span>🏠</span>
+  <span>🔍</span>
+  <span>➕</span>
+  <span>❤️</span>
+  <span>👤</span>
+</div>
+
+<script>
+function toggleLike(el) {
+  if (el.innerHTML === "🤍") {
+    el.innerHTML = "❤️";
+  } else {
+    el.innerHTML = "🤍";
+  }
+}
+</script>
+
+</body>
+</html>
