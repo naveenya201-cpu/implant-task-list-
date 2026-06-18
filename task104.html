@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banking App UI</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f3f6fb;
+}
+
+header {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 20px;
+  border-radius: 0 0 25px 25px;
+}
+
+.balance-card {
+  background: white;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.balance {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1e3c72;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+}
+
+.action {
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  width: 30%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.transactions {
+  margin: 15px;
+}
+
+.txn {
+  background: white;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+
+.credit {
+  color: green;
+}
+
+.debit {
+  color: red;
+}
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  border-top: 1px solid #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Welcome, Alex 👋</h2>
+  <p>Your financial overview</p>
+</header>
+
+<div class="balance-card">
+  <p>Current Balance</p>
+  <div class="balance">₹ 52,450</div>
+</div>
+
+<div class="actions">
+  <div class="action">💸 Send</div>
+  <div class="action">💰 Receive</div>
+  <div class="action">🧾 Pay</div>
+</div>
+
+<div class="transactions">
+  <h3>Recent Transactions</h3>
+
+  <div class="txn">
+    <span>Amazon</span>
+    <span class="debit">-₹1,200</span>
+  </div>
+
+  <div class="txn">
+    <span>Salary</span>
+    <span class="credit">+₹25,000</span>
+  </div>
+
+  <div class="txn">
+    <span>Electricity Bill</span>
+    <span class="debit">-₹900</span>
+  </div>
+</div>
+
+<div class="nav">
+  <span>🏠</span>
+  <span>💳</span>
+  <span>📊</span>
+  <span>👤</span>
+</div>
+
+</body>
+</html>
