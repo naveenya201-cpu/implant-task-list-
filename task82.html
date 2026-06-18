@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .number {
+            font-size: 32px;
+            color: #3498db;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Dashboard</h1>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h3>Users</h3>
+            <div class="number">150</div>
+        </div>
+
+        <div class="card">
+            <h3>Orders</h3>
+            <div class="number">75</div>
+        </div>
+
+        <div class="card">
+            <h3>Revenue</h3>
+            <div class="number">$5,000</div>
+        </div>
+    </div>
+
+</body>
+</html>
