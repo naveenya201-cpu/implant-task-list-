@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple HTML Dashboard Routing</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    /* Navbar */
+    .nav {
+      background: #333;
+      padding: 15px;
+    }
+
+    .nav button {
+      background: none;
+      border: none;
+      color: white;
+      margin-right: 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .nav button:hover {
+      text-decoration: underline;
+    }
+
+    /* Page container */
+    .page {
+      display: none;
+      padding: 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* Dashboard cards */
+    .cards {
+      display: flex;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 1;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .value {
+      font-size: 28px;
+      color: #3498db;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <div class="nav">
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('contact')">Contact</button>
+    <button onclick="showPage('dashboard')">Dashboard</button>
+  </div>
+
+  <!-- HOME -->
+  <div id="home" class="page active">
+    <h1>Home Page</h1>
+    <p>Welcome to simple HTML routing example.</p>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="page">
+    <h1>About Page</h1>
+    <p>This is a single HTML file without React.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="page">
+    <h1>Contact Page</h1>
+    <p>Email: demo@example.com</p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="page">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Users</h3>
+        <div class="value">150</div>
+      </div>
+
+      <div class="card">
+        <h3>Orders</h3>
+        <div class="value">75</div>
+      </div>
+
+      <div class="card">
+        <h3>Revenue</h3>
+        <div class="value">$5,000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT ROUTER -->
+  <script>
+    function showPage(pageId) {
+      let pages = document.querySelectorAll(".page");
+
+      pages.forEach(page => {
+        page.classList.remove("active");
+      });
+
+      document.getElementById(pageId).classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
