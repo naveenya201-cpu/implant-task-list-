@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlogSpace</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8fafc;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#6366f1;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+/* Hero */
+.hero{
+    height:70vh;
+    background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+    url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1400&q=80');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.btn{
+    display:inline-block;
+    background:#6366f1;
+    color:white;
+    text-decoration:none;
+    padding:12px 28px;
+    border-radius:8px;
+}
+
+/* Categories */
+.categories{
+    padding:50px 8%;
+    text-align:center;
+}
+
+.category-btn{
+    background:#eef2ff;
+    color:#6366f1;
+    border:none;
+    padding:10px 18px;
+    border-radius:20px;
+    margin:5px;
+    cursor:pointer;
+}
+
+/* Blog Cards */
+.blogs{
+    padding:0 8% 70px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.blog-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.blog-card:hover{
+    transform:translateY(-8px);
+}
+
+.blog-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.blog-content{
+    padding:20px;
+}
+
+.blog-content h3{
+    margin-bottom:10px;
+}
+
+.meta{
+    color:#777;
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+.read-more{
+    color:#6366f1;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Author Section */
+.author{
+    background:white;
+    padding:60px 8%;
+    text-align:center;
+}
+
+.author img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:15px;
+}
+
+/* Newsletter */
+.newsletter{
+    background:#6366f1;
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.newsletter input{
+    width:300px;
+    max-width:90%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    margin-top:15px;
+}
+
+.newsletter button{
+    padding:12px 20px;
+    border:none;
+    background:#111827;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* Footer */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+    nav ul{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">BlogSpace</div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>Share Ideas, Inspire People</h1>
+        <p>Discover stories, insights, and knowledge from passionate writers.</p>
+        <a href="#" class="btn">Start Reading</a>
+    </div>
+</section>
+
+<section class="categories">
+    <button class="category-btn">Technology</button>
+    <button class="category-btn">Business</button>
+    <button class="category-btn">Travel</button>
+    <button class="category-btn">Lifestyle</button>
+    <button class="category-btn">Education</button>
+</section>
+
+<section class="blogs">
+
+    <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80">
+        <div class="blog-content">
+            <div class="meta">By John Doe • June 2026</div>
+            <h3>The Future of Artificial Intelligence</h3>
+            <p>Explore how AI is transforming industries and changing everyday life.</p>
+            <br>
+            <a href="#" class="read-more">Read More →</a>
+        </div>
+    </div>
+
+    <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80">
+        <div class="blog-content">
+            <div class="meta">By Sarah Smith • June 2026</div>
+            <h3>Top Travel Destinations</h3>
+            <p>Discover breathtaking locations perfect for your next adventure.</p>
+            <br>
+            <a href="#" class="read-more">Read More →</a>
+        </div>
+    </div>
+
+    <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80">
+        <div class="blog-content">
+            <div class="meta">By Alex Brown • June 2026</div>
+            <h3>Productivity Tips for Professionals</h3>
+            <p>Simple strategies to improve focus and get more work done.</p>
+            <br>
+            <a href="#" class="read-more">Read More →</a>
+        </div>
+    </div>
+
+</section>
+
+<section class="author">
+    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Author">
+    <h2>Meet Our Writer</h2>
+    <h3>Adam iver</h3>
+    <p>Passionate, sharing knowledge, experiences, and inspiration.</p>
+</section>
+
+<section class="newsletter">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Get the latest articles delivered straight to your inbox.</p>
+    <br>
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+</section>
+
+<footer>
+    <p>© 2026 BlogSpace. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
