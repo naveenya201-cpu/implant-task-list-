@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Wireframe Studio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Roboto',sans-serif;
+}
+
+body{
+  background:#0a0a0f;
+  color:white;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* PHONE FRAME */
+.phone{
+  width:360px;
+  height:720px;
+  background:#111827;
+  border-radius:40px;
+  border:3px solid #22c55e;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* CANVAS */
+.screen{
+  height:100%;
+  overflow:auto;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  background:
+    linear-gradient(180deg,#0f172a,#050816);
+}
+
+/* WIREFRAME BLOCKS */
+.block{
+  padding:14px;
+  border-radius:14px;
+  border:1px dashed rgba(34,197,94,0.6);
+  background:rgba(255,255,255,0.03);
+  cursor:grab;
+  user-select:none;
+}
+
+/* COMPONENT TYPES */
+.header{
+  height:60px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#22c55e;
+}
+
+.card{
+  height:100px;
+}
+
+.text{
+  height:80px;
+}
+
+.image{
+  height:140px;
+  background:rgba(34,197,94,0.1);
+}
+
+.button{
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#22c55e;
+  font-weight:600;
+}
+
+/* BOTTOM TOOL DOCK */
+.dock{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0f172a;
+  border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  justify-content:space-around;
+  padding:10px 5px;
+}
+
+.dock button{
+  background:transparent;
+  border:1px solid #22c55e;
+  color:#22c55e;
+  padding:6px 10px;
+  border-radius:10px;
+  font-size:11px;
+  cursor:pointer;
+}
+
+.dock button:hover{
+  background:#22c55e;
+  color:black;
+}
+
+.title{
+  position:absolute;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:12px;
+  color:#94a3b8;
+}
+
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+<div class="title">Mobile Wireframe</div>
+
+<div class="screen" id="screen">
+  <div class="block header">HEADER</div>
+</div>
+
+<!-- TOOL DOCK -->
+<div class="dock">
+  <button onclick="add('header')">Header</button>
+  <button onclick="add('text')">Text</button>
+  <button onclick="add('card')">Card</button>
+  <button onclick="add('image')">Image</button>
+  <button onclick="add('button')">Button</button>
+</div>
+
+</div>
+
+<script>
+
+const screen = document.getElementById("screen");
+
+function add(type){
+
+  const el = document.createElement("div");
+  el.classList.add("block", type);
+
+  if(type === "header"){
+    el.innerText = "HEADER";
+  }
+
+  if(type === "text"){
+    el.innerText = "TEXT BLOCK CONTENT";
+  }
+
+  if(type === "card"){
+    el.innerText = "CARD COMPONENT";
+  }
+
+  if(type === "image"){
+    el.innerText = "IMAGE PLACEHOLDER";
+  }
+
+  if(type === "button"){
+    el.innerText = "BUTTON";
+  }
+
+  makeDraggable(el);
+  screen.appendChild(el);
+}
+
+/* DRAG SUPPORT */
+function makeDraggable(el){
+
+  let dragging = false;
+  let offsetX, offsetY;
+
+  el.onmousedown = (e)=>{
+    dragging = true;
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
+  };
+
+  document.onmousemove = (e)=>{
+    if(dragging){
+      el.style.position = "relative";
+      el.style.left = (e.pageX * 0.01) + "px";
+      el.style.top = (e.pageY * 0.01) + "px";
+    }
+  };
+
+  document.onmouseup = ()=>{
+    dragging = false;
+  };
+}
+
+</script>
+
+</body>
+</html>
