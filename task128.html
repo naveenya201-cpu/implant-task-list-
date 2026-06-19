@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Journey Map Builder</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+body{
+  background:#0f172a;
+  color:white;
+  padding:30px;
+}
+
+.container{
+  max-width:1400px;
+  margin:auto;
+}
+
+h1{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  margin-top:8px;
+}
+
+textarea{
+  min-height:80px;
+  resize:vertical;
+}
+
+.section{
+  background:#1e293b;
+  padding:20px;
+  border-radius:16px;
+  margin-bottom:20px;
+}
+
+.section h2{
+  color:#38bdf8;
+  margin-bottom:15px;
+}
+
+.journey-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.stage{
+  background:#111827;
+  padding:18px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.stage h3{
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:10px;
+  background:#38bdf8;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+button:hover{
+  background:#0ea5e9;
+}
+
+.output{
+  margin-top:30px;
+}
+
+.result{
+  background:#1e293b;
+  padding:25px;
+  border-radius:16px;
+}
+
+.timeline{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  margin-top:20px;
+}
+
+.card{
+  min-width:260px;
+  background:#111827;
+  padding:15px;
+  border-radius:12px;
+}
+
+.card h4{
+  color:#38bdf8;
+  margin-bottom:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Customer Journey Map Builder</h1>
+
+<div class="section">
+  <h2>Customer Information</h2>
+
+  <input id="persona" placeholder="Customer Persona Name">
+  <input id="goal" placeholder="Customer Goal">
+</div>
+
+<div class="journey-grid">
+
+  <div class="stage">
+    <h3>Awareness</h3>
+    <textarea id="awarenessAction" placeholder="Actions"></textarea>
+    <textarea id="awarenessThought" placeholder="Thoughts"></textarea>
+    <textarea id="awarenessEmotion" placeholder="Emotions"></textarea>
+  </div>
+
+  <div class="stage">
+    <h3>Consideration</h3>
+    <textarea id="considerAction" placeholder="Actions"></textarea>
+    <textarea id="considerThought" placeholder="Thoughts"></textarea>
+    <textarea id="considerEmotion" placeholder="Emotions"></textarea>
+  </div>
+
+  <div class="stage">
+    <h3>Purchase</h3>
+    <textarea id="purchaseAction" placeholder="Actions"></textarea>
+    <textarea id="purchaseThought" placeholder="Thoughts"></textarea>
+    <textarea id="purchaseEmotion" placeholder="Emotions"></textarea>
+  </div>
+
+  <div class="stage">
+    <h3>Retention</h3>
+    <textarea id="retentionAction" placeholder="Actions"></textarea>
+    <textarea id="retentionThought" placeholder="Thoughts"></textarea>
+    <textarea id="retentionEmotion" placeholder="Emotions"></textarea>
+  </div>
+
+  <div class="stage">
+    <h3>Advocacy</h3>
+    <textarea id="advocacyAction" placeholder="Actions"></textarea>
+    <textarea id="advocacyThought" placeholder="Thoughts"></textarea>
+    <textarea id="advocacyEmotion" placeholder="Emotions"></textarea>
+  </div>
+
+</div>
+
+<button onclick="generateJourneyMap()">
+Generate Customer Journey Map
+</button>
+
+<div class="output" id="output"></div>
+
+</div>
+
+<script>
+function generateJourneyMap(){
+
+const persona = document.getElementById("persona").value;
+const goal = document.getElementById("goal").value;
+
+const stages = [
+  {
+    title:"Awareness",
+    action:document.getElementById("awarenessAction").value,
+    thought:document.getElementById("awarenessThought").value,
+    emotion:document.getElementById("awarenessEmotion").value
+  },
+  {
+    title:"Consideration",
+    action:document.getElementById("considerAction").value,
+    thought:document.getElementById("considerThought").value,
+    emotion:document.getElementById("considerEmotion").value
+  },
+  {
+    title:"Purchase",
+    action:document.getElementById("purchaseAction").value,
+    thought:document.getElementById("purchaseThought").value,
+    emotion:document.getElementById("purchaseEmotion").value
+  },
+  {
+    title:"Retention",
+    action:document.getElementById("retentionAction").value,
+    thought:document.getElementById("retentionThought").value,
+    emotion:document.getElementById("retentionEmotion").value
+  },
+  {
+    title:"Advocacy",
+    action:document.getElementById("advocacyAction").value,
+    thought:document.getElementById("advocacyThought").value,
+    emotion:document.getElementById("advocacyEmotion").value
+  }
+];
+
+let html = `
+<div class="result">
+<h2>${persona}</h2>
+<p><strong>Goal:</strong> ${goal}</p>
+
+<div class="timeline">
+`;
+
+stages.forEach(stage=>{
+  html += `
+  <div class="card">
+    <h4>${stage.title}</h4>
+    <p><strong>Actions:</strong><br>${stage.action}</p><br>
+    <p><strong>Thoughts:</strong><br>${stage.thought}</p><br>
+    <p><strong>Emotions:</strong><br>${stage.emotion}</p>
+  </div>
+  `;
+});
+
+html += `
+</div>
+</div>
+`;
+
+document.getElementById("output").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
