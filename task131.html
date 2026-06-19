@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information Architecture Builder</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  background:#fffaf5;
+  color:#4a2c1b;
+  position:relative;
+}
+
+/* Abstract Art Background */
+
+.art{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.shape{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.7;
+}
+
+.shape1{
+  width:450px;
+  height:450px;
+  background:#ff8c42;
+  top:-150px;
+  left:-120px;
+}
+
+.shape2{
+  width:400px;
+  height:400px;
+  background:#ffbe0b;
+  right:-120px;
+  top:80px;
+}
+
+.shape3{
+  width:300px;
+  height:300px;
+  background:#ff9f68;
+  bottom:-100px;
+  left:25%;
+}
+
+.shape4{
+  width:350px;
+  height:350px;
+  background:#ffd166;
+  bottom:-120px;
+  right:15%;
+}
+
+.line{
+  position:absolute;
+  width:600px;
+  height:600px;
+  border:4px solid rgba(255,140,66,.15);
+  border-radius:45% 55% 60% 40%;
+  transform:rotate(30deg);
+}
+
+.line1{
+  top:-100px;
+  right:-150px;
+}
+
+.line2{
+  bottom:-200px;
+  left:-150px;
+}
+
+.container{
+  max-width:1400px;
+  margin:auto;
+  padding:40px;
+}
+
+.hero{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.hero h1{
+  font-size:64px;
+  font-weight:700;
+}
+
+.hero span{
+  color:#ff7b00;
+}
+
+.hero p{
+  margin-top:10px;
+  color:#8a5a44;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:350px 1fr;
+  gap:25px;
+}
+
+.panel{
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(25px);
+  padding:25px;
+  border-radius:32px;
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 15px 40px rgba(255,140,66,.15);
+  height:fit-content;
+}
+
+.panel h2{
+  margin-bottom:20px;
+  color:#ff7b00;
+}
+
+input,
+textarea{
+  width:100%;
+  padding:14px;
+  border:none;
+  outline:none;
+  border-radius:18px;
+  margin-bottom:12px;
+  background:white;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:18px;
+  cursor:pointer;
+  font-weight:700;
+  color:white;
+
+  background:linear-gradient(
+    135deg,
+    #ff7b00,
+    #ffb347
+  );
+}
+
+button:hover{
+  transform:translateY(-2px);
+}
+
+.architecture{
+  display:grid;
+  gap:20px;
+}
+
+.node{
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(20px);
+  border-radius:30px;
+  padding:25px;
+  box-shadow:0 12px 30px rgba(255,140,66,.12);
+}
+
+.node-title{
+  font-size:24px;
+  font-weight:700;
+  color:#ff7b00;
+  margin-bottom:15px;
+}
+
+.children{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+
+.child{
+  background:white;
+  padding:16px;
+  border-radius:18px;
+  border-left:5px solid #ff9f1c;
+}
+
+.label{
+  color:#c96b00;
+  font-size:13px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.empty{
+  text-align:center;
+  padding:80px;
+  color:#a16c4d;
+}
+
+@media(max-width:1000px){
+
+.layout{
+  grid-template-columns:1fr;
+}
+
+.hero h1{
+  font-size:42px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="art">
+  <div class="shape shape1"></div>
+  <div class="shape shape2"></div>
+  <div class="shape shape3"></div>
+  <div class="shape shape4"></div>
+
+  <div class="line line1"></div>
+  <div class="line line2"></div>
+</div>
+
+<div class="container">
+
+<div class="hero">
+  <h1> Information <span>Architecture</span></h1>
+  <p>Structure content, navigation, and user flows beautifully.</p>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+
+  <div class="panel">
+
+    <h2>New Architecture Node</h2>
+
+    <input
+      id="page"
+      placeholder="Page / Section Name">
+
+    <textarea
+      id="children"
+      placeholder="Subpages (comma separated)">
+    </textarea>
+
+    <button onclick="addNode()">
+      Add Structure
+    </button>
+
+  </div>
+
+  <!-- RESULTS -->
+
+  <div class="architecture" id="architecture">
+
+    <div class="empty">
+      Start building your information architecture
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<script>
+
+let architecture =
+JSON.parse(
+localStorage.getItem('orangeIA') || '[]'
+);
+
+function addNode(){
+
+const page =
+document.getElementById('page').value;
+
+const children =
+document.getElementById('children')
+.value
+.split(',')
+.map(item=>item.trim())
+.filter(item=>item);
+
+architecture.push({
+page,
+children
+});
+
+localStorage.setItem(
+'orangeIA',
+JSON.stringify(architecture)
+);
+
+render();
+
+document.getElementById('page').value='';
+document.getElementById('children').value='';
+
+}
+
+function render(){
+
+const container =
+document.getElementById('architecture');
+
+if(architecture.length===0){
+
+container.innerHTML=`
+<div class="empty">
+ Start building your information architecture
+</div>
+`;
+
+return;
+}
+
+container.innerHTML='';
+
+architecture.forEach(node=>{
+
+let childrenHTML='';
+
+node.children.forEach(child=>{
+
+childrenHTML += `
+<div class="child">
+<div class="label">Subpage</div>
+${child}
+</div>
+`;
+
+});
+
+container.innerHTML += `
+<div class="node">
+
+<div class="node-title">
+📂 ${node.page}
+</div>
+
+<div class="children">
+${childrenHTML}
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
