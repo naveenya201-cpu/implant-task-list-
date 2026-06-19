@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empathy Map Designer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter, Arial, sans-serif;
+}
+
+body{
+    background:#e78888;
+    color:white;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.persona{
+    margin-bottom:20px;
+}
+
+.persona input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+}
+
+.map{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#6a0505;
+    padding:20px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.card h2{
+    margin-bottom:10px;
+    color:#38bdf8;
+}
+
+textarea{
+    width:100%;
+    min-height:120px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    resize:vertical;
+}
+
+.bottom{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:14px;
+    background:#d13538;
+    color:black;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.output{
+    margin-top:30px;
+}
+
+.result{
+    background:#4a0101;
+    padding:20px;
+    border-radius:16px;
+    margin-top:15px;
+}
+
+@media(max-width:768px){
+    .map,
+    .bottom{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Empathy Map Designer</h1>
+
+<div class="persona">
+    <input id="personaName" placeholder="Persona Name">
+</div>
+
+<div class="map">
+
+    <div class="card">
+        <h2>🗣 Says</h2>
+        <textarea id="says"></textarea>
+    </div>
+
+    <div class="card">
+        <h2>💭 Thinks</h2>
+        <textarea id="thinks"></textarea>
+    </div>
+
+    <div class="card">
+        <h2>🏃 Does</h2>
+        <textarea id="does"></textarea>
+    </div>
+
+    <div class="card">
+        <h2>❤️ Feels</h2>
+        <textarea id="feels"></textarea>
+    </div>
+
+</div>
+
+<div class="bottom">
+
+    <div class="card">
+        <h2>⚠️ Pains</h2>
+        <textarea id="pains"></textarea>
+    </div>
+
+    <div class="card">
+        <h2>🚀 Gains</h2>
+        <textarea id="gains"></textarea>
+    </div>
+
+</div>
+
+<button onclick="saveMap()">Save Empathy Map</button>
+
+<div class="output" id="output"></div>
+
+</div>
+
+<script>
+function saveMap(){
+
+const persona = document.getElementById('personaName').value;
+const says = document.getElementById('says').value;
+const thinks = document.getElementById('thinks').value;
+const does = document.getElementById('does').value;
+const feels = document.getElementById('feels').value;
+const pains = document.getElementById('pains').value;
+const gains = document.getElementById('gains').value;
+
+document.getElementById('output').innerHTML = `
+<div class="result">
+    <h2>${persona}</h2>
+    <p><strong>Says:</strong> ${says}</p><br>
+    <p><strong>Thinks:</strong> ${thinks}</p><br>
+    <p><strong>Does:</strong> ${does}</p><br>
+    <p><strong>Feels:</strong> ${feels}</p><br>
+    <p><strong>Pains:</strong> ${pains}</p><br>
+    <p><strong>Gains:</strong> ${gains}</p>
+</div>
+`;
+}
+</script>
+
+</body>
+</html>
