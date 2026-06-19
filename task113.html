@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Estates</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f7f8fc;
+    color:#333;
+}
+
+/* Navbar */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:#111827;
+    color:white;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#fbbf24;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#fbbf24;
+}
+
+/* Hero */
+.hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:90vh;
+}
+
+.hero-left{
+    background:#111827;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:60px;
+}
+
+.hero-left h1{
+    font-size:60px;
+    line-height:1.1;
+}
+
+.hero-left p{
+    margin:20px 0;
+    color:#d1d5db;
+    font-size:18px;
+}
+
+.btn{
+    width:180px;
+    text-align:center;
+    padding:14px;
+    background:#fbbf24;
+    color:#111827;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.hero-right{
+    background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0f?auto=format&fit=crop&w=1400&q=80');
+    background-size:cover;
+    background-position:center;
+}
+
+/* Search Box */
+.search-box{
+    background:white;
+    width:85%;
+    margin:-50px auto 50px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.search-box input,
+.search-box select{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+.search-box button{
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Stats */
+.stats{
+    padding:50px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    text-align:center;
+}
+
+.stat{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.stat h2{
+    color:#f59e0b;
+    font-size:38px;
+}
+
+/* Properties */
+.section-title{
+    text-align:center;
+    margin:50px 0 30px;
+    font-size:40px;
+}
+
+.properties{
+    padding:0 8% 70px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.property-card{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.property-card:hover{
+    transform:translateY(-8px);
+}
+
+.property-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.property-content{
+    padding:20px;
+}
+
+.price{
+    color:#f59e0b;
+    font-size:26px;
+    font-weight:bold;
+}
+
+.property-info{
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+    color:#666;
+}
+
+/* CTA */
+.cta{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.cta h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.cta a{
+    display:inline-block;
+    margin-top:15px;
+    background:#fbbf24;
+    color:#111827;
+    padding:14px 30px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* Footer */
+footer{
+    background:#0f172a;
+    color:#cbd5e1;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .hero-left h1{
+        font-size:42px;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Prime Estates</div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Properties</a>
+        <a href="#">Agents</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-left">
+        <h1>Find Your Dream Home Today</h1>
+        <p>
+            Explore premium apartments, villas, and luxury homes
+            in the best locations.
+        </p>
+        <a href="#" class="btn">Explore Now</a>
+    </div>
+
+    <div class="hero-right"></div>
+</section>
+
+<div class="search-box">
+    <input type="text" placeholder="Location">
+    <select>
+        <option>Property Type</option>
+        <option>Apartment</option>
+        <option>Villa</option>
+        <option>Commercial</option>
+    </select>
+
+    <select>
+        <option>Budget</option>
+        <option>₹25 Lakh+</option>
+        <option>₹50 Lakh+</option>
+        <option>₹1 Crore+</option>
+    </select>
+
+    <button>Search</button>
+</div>
+
+<section class="stats">
+    <div class="stat">
+        <h2>1200+</h2>
+        <p>Properties Listed</p>
+    </div>
+
+    <div class="stat">
+        <h2>500+</h2>
+        <p>Happy Clients</p>
+    </div>
+
+    <div class="stat">
+        <h2>80+</h2>
+        <p>Expert Agents</p>
+    </div>
+
+    <div class="stat">
+        <h2>15+</h2>
+        <p>Years Experience</p>
+    </div>
+</section>
+
+<h2 class="section-title">Featured Properties</h2>
+
+<section class="properties">
+
+    <div class="property-card">
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1000&q=80">
+        <div class="property-content">
+            <div class="price">₹85 Lakhs</div>
+            <h3>Luxury Villa</h3>
+            <div class="property-info">
+                <span>4 Beds</span>
+                <span>3 Baths</span>
+                <span>2500 sqft</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="property-card">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1000&q=80">
+        <div class="property-content">
+            <div class="price">₹1.2 Crore</div>
+            <h3>Modern Apartment</h3>
+            <div class="property-info">
+                <span>3 Beds</span>
+                <span>2 Baths</span>
+                <span>1800 sqft</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="property-card">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80">
+        <div class="property-content">
+            <div class="price">₹65 Lakhs</div>
+            <h3>Family House</h3>
+            <div class="property-info">
+                <span>3 Beds</span>
+                <span>2 Baths</span>
+                <span>1600 sqft</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="cta">
+    <h2>Ready to Buy or Sell a Property?</h2>
+    <p>Connect with our real estate experts today.</p>
+    <a href="#">Contact Us</a>
+</section>
+
+<footer>
+    © 2026 Prime Estates. All Rights Reserved.
+</footer>
+
+</body>
+</html>
