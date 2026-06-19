@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareerHub - Job Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#0f172a;
+    color:white;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    color:#38bdf8;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+/* Hero */
+.hero{
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    color:white;
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+/* Search Box */
+.search-box{
+    background:white;
+    max-width:1000px;
+    margin:30px auto 0;
+    padding:20px;
+    border-radius:15px;
+    display:grid;
+    grid-template-columns:2fr 2fr 1fr auto;
+    gap:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.search-box input,
+.search-box select{
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+.search-box button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Stats */
+.stats{
+    padding:70px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:white;
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.stat h2{
+    color:#2563eb;
+    font-size:40px;
+}
+
+/* Jobs */
+.section-title{
+    text-align:center;
+    font-size:40px;
+    margin:20px 0 40px;
+}
+
+.jobs{
+    padding:0 8% 70px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.job-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.job-card:hover{
+    transform:translateY(-6px);
+}
+
+.company{
+    color:#2563eb;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.job-info{
+    color:#666;
+    margin:10px 0;
+}
+
+.apply-btn{
+    display:inline-block;
+    margin-top:15px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:8px;
+}
+
+/* Companies */
+.companies{
+    background:white;
+    padding:70px 8%;
+}
+
+.company-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.company-card{
+    padding:30px;
+    text-align:center;
+    border-radius:12px;
+    background:#f8fafc;
+    font-weight:600;
+}
+
+/* Newsletter */
+.newsletter{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.newsletter input{
+    padding:12px;
+    width:300px;
+    max-width:90%;
+    border:none;
+    border-radius:8px;
+}
+
+.newsletter button{
+    padding:12px 20px;
+    border:none;
+    background:#38bdf8;
+    color:#0f172a;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Footer */
+footer{
+    background:#020617;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:38px;
+    }
+
+    .search-box{
+        grid-template-columns:1fr;
+    }
+
+    nav ul{
+        display:none;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">CareerHub</div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Companies</a></li>
+            <li><a href="#">Employers</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Find Your Dream Job</h1>
+    <p>Discover thousands of opportunities from top employers.</p>
+
+    <div class="search-box">
+        <input type="text" placeholder="Job Title">
+        <input type="text" placeholder="Location">
+        <select>
+            <option>Experience</option>
+            <option>Fresher</option>
+            <option>1-3 Years</option>
+            <option>3-5 Years</option>
+            <option>5+ Years</option>
+        </select>
+        <button>Search</button>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat">
+        <h2>10K+</h2>
+        <p>Active Jobs</p>
+    </div>
+
+    <div class="stat">
+        <h2>5K+</h2>
+        <p>Companies</p>
+    </div>
+
+    <div class="stat">
+        <h2>50K+</h2>
+        <p>Job Seekers</p>
+    </div>
+
+    <div class="stat">
+        <h2>95%</h2>
+        <p>Success Rate</p>
+    </div>
+</section>
+
+<h2 class="section-title">Featured Jobs</h2>
+
+<section class="jobs">
+
+    <div class="job-card">
+        <div class="company">Tech Solutions Pvt Ltd</div>
+        <h3>Frontend Developer</h3>
+        <div class="job-info">📍 Chennai | 💼 Full-Time</div>
+        <div class="job-info">₹6 - ₹10 LPA</div>
+        <a href="#" class="apply-btn">Apply Now</a>
+    </div>
+
+    <div class="job-card">
+        <div class="company">Digital Innovations</div>
+        <h3>UI/UX Designer</h3>
+        <div class="job-info">📍 Bengaluru | 💼 Hybrid</div>
+        <div class="job-info">₹5 - ₹8 LPA</div>
+        <a href="#" class="apply-btn">Apply Now</a>
+    </div>
+
+    <div class="job-card">
+        <div class="company">CloudTech Systems</div>
+        <h3>Cloud Engineer</h3>
+        <div class="job-info">📍 Hyderabad | 💼 Remote</div>
+        <div class="job-info">₹10 - ₹18 LPA</div>
+        <a href="#" class="apply-btn">Apply Now</a>
+    </div>
+
+</section>
+
+<section class="companies">
+    <h2 class="section-title">Top Hiring Companies</h2>
+
+    <div class="company-grid">
+        <div class="company-card">Google</div>
+        <div class="company-card">Microsoft</div>
+        <div class="company-card">Amazon</div>
+        <div class="company-card">Infosys</div>
+        <div class="company-card">TCS</div>
+        <div class="company-card">Wipro</div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <h2>Get Job Alerts</h2>
+    <p>Receive the latest opportunities directly in your inbox.</p>
+    <br>
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+</section>
+
+<footer>
+    <p>© 2026 CareerHub. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
