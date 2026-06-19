@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>User Flow Designer</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Manrope',sans-serif;
+}
+
+body{
+background:
+linear-gradient(
+135deg,
+#ecfeff,
+#f0fdfa
+);
+
+min-height:100vh;
+overflow-x:hidden;
+color:#134e4a;
+}
+
+/* Floating Abstract Shapes */
+
+.shape{
+position:fixed;
+border-radius:50%;
+filter:blur(80px);
+opacity:.5;
+z-index:-1;
+}
+
+.s1{
+width:400px;
+height:400px;
+background:#99f6e4;
+top:-120px;
+left:-120px;
+}
+
+.s2{
+width:350px;
+height:350px;
+background:#67e8f9;
+right:-100px;
+top:120px;
+}
+
+.s3{
+width:300px;
+height:300px;
+background:#5eead4;
+bottom:-120px;
+left:30%;
+}
+
+.container{
+max-width:1500px;
+margin:auto;
+padding:40px;
+}
+
+.hero{
+text-align:center;
+margin-bottom:40px;
+}
+
+.hero h1{
+font-size:64px;
+font-weight:800;
+}
+
+.hero span{
+color:#14b8a6;
+}
+
+.hero p{
+margin-top:10px;
+color:#0f766e;
+}
+
+/* Layout */
+
+.layout{
+display:grid;
+grid-template-columns:340px 1fr;
+gap:25px;
+}
+
+.panel{
+background:rgba(255,255,255,.6);
+backdrop-filter:blur(20px);
+
+padding:25px;
+border-radius:32px;
+
+border:1px solid rgba(255,255,255,.8);
+}
+
+.panel h2{
+margin-bottom:20px;
+}
+
+input,
+textarea{
+
+width:100%;
+padding:14px;
+
+border:none;
+outline:none;
+
+border-radius:16px;
+margin-bottom:12px;
+
+background:white;
+}
+
+button{
+
+width:100%;
+padding:15px;
+
+border:none;
+border-radius:18px;
+
+font-weight:700;
+cursor:pointer;
+
+color:white;
+
+background:
+linear-gradient(
+135deg,
+#14b8a6,
+#06b6d4
+);
+
+}
+
+.flow-wrapper{
+
+overflow-x:auto;
+padding:30px 10px;
+}
+
+.flow{
+
+display:flex;
+align-items:center;
+gap:40px;
+min-height:500px;
+}
+
+/* Node */
+
+.node{
+
+min-width:240px;
+
+background:rgba(255,255,255,.7);
+backdrop-filter:blur(20px);
+
+padding:25px;
+border-radius:30px;
+
+box-shadow:
+0 15px 35px rgba(20,184,166,.12);
+
+position:relative;
+}
+
+.node::after{
+
+content:'➜';
+
+position:absolute;
+right:-30px;
+top:50%;
+
+transform:translateY(-50%);
+
+font-size:28px;
+color:#14b8a6;
+
+}
+
+.node:last-child::after{
+display:none;
+}
+
+.step{
+
+width:50px;
+height:50px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+font-weight:800;
+font-size:18px;
+
+background:
+linear-gradient(
+135deg,
+#14b8a6,
+#06b6d4
+);
+
+color:white;
+
+margin-bottom:15px;
+}
+
+.title{
+font-size:22px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.desc{
+color:#0f766e;
+line-height:1.5;
+}
+
+.empty{
+
+height:400px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:22px;
+color:#0f766e;
+}
+
+@media(max-width:1000px){
+
+.layout{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="shape s1"></div>
+<div class="shape s2"></div>
+<div class="shape s3"></div>
+
+<div class="container">
+
+<div class="hero">
+<h1>User <span>Flow</span> Studio</h1>
+<p>Map every interaction from entry to success.</p>
+</div>
+
+<div class="layout">
+
+<div class="panel">
+
+<h2>Create Flow Step</h2>
+
+<input
+id="title"
+placeholder="Step Name">
+
+<textarea
+id="description"
+placeholder="Describe what happens at this stage">
+</textarea>
+
+<button onclick="addStep()">
+Add Step
+</button>
+
+</div>
+
+<div class="flow-wrapper">
+
+<div class="flow" id="flow">
+
+<div class="empty">
+ Build your user journey flow
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let flowSteps =
+JSON.parse(
+localStorage.getItem('mintFlow') || '[]'
+);
+
+function addStep(){
+
+const title =
+document.getElementById('title').value;
+
+const description =
+document.getElementById('description').value;
+
+if(!title) return;
+
+flowSteps.push({
+title,
+description
+});
+
+localStorage.setItem(
+'mintFlow',
+JSON.stringify(flowSteps)
+);
+
+render();
+
+document.getElementById('title').value='';
+document.getElementById('description').value='';
+
+}
+
+function render(){
+
+const flow =
+document.getElementById('flow');
+
+if(flowSteps.length===0){
+
+flow.innerHTML=`
+<div class="empty">
+Build your user journey flow
+</div>
+`;
+
+return;
+}
+
+flow.innerHTML='';
+
+flowSteps.forEach((step,index)=>{
+
+flow.innerHTML += `
+
+<div class="node">
+
+<div class="step">
+${index+1}
+</div>
+
+<div class="title">
+${step.title}
+</div>
+
+<div class="desc">
+${step.description}
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
