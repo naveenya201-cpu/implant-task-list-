@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Persona Generator</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#111827;
+    color:white;
+    display:flex;
+    justify-content:center;
+    padding:40px;
+}
+
+.container{
+    width:700px;
+    background:#1f2937;
+    padding:25px;
+    border-radius:15px;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#06b6d4;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.persona-card{
+    margin-top:25px;
+    background:#374151;
+    padding:20px;
+    border-radius:12px;
+}
+
+h2{
+    color:#06b6d4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Create User Persona</h1>
+
+<input id="name" placeholder="Name">
+<input id="age" placeholder="Age">
+<input id="role" placeholder="Job / Role">
+<input id="goal" placeholder="Main Goal">
+<textarea id="pain" placeholder="Pain Points"></textarea>
+<textarea id="needs" placeholder="Needs"></textarea>
+
+<button onclick="generatePersona()">
+Generate Persona
+</button>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+function generatePersona(){
+
+    const name=document.getElementById("name").value;
+    const age=document.getElementById("age").value;
+    const role=document.getElementById("role").value;
+    const goal=document.getElementById("goal").value;
+    const pain=document.getElementById("pain").value;
+    const needs=document.getElementById("needs").value;
+
+    document.getElementById("output").innerHTML=`
+        <div class="persona-card">
+            <h2>${name}</h2>
+            <p><strong>Age:</strong> ${age}</p>
+            <p><strong>Role:</strong> ${role}</p>
+            <p><strong>Goal:</strong> ${goal}</p>
+            <p><strong>Pain Points:</strong> ${pain}</p>
+            <p><strong>Needs:</strong> ${needs}</p>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
