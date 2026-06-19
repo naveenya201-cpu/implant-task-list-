@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lumora Digital Studio</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  body {
+    background: radial-gradient(circle at top, #600446, #eddded);
+    color: white;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 8%;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #036061, #76d1e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  nav a {
+    color: #cbd5e1;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  nav a:hover {
+    color: #06b6d4;
+  }
+
+  /* HERO */
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 8%;
+    gap: 40px;
+  }
+
+  .hero-text {
+    max-width: 550px;
+  }
+
+  .tag {
+    color: #06b6d4;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .hero h1 {
+    font-size: 54px;
+    margin: 15px 0;
+    line-height: 1.1;
+  }
+
+  .hero p {
+    color: #94a3b8;
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  .btn {
+    padding: 12px 22px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(90deg, #7c3aed, #06b6d4);
+    color: white;
+    font-weight: bold;
+  }
+
+  .hero-visual {
+    position: relative;
+    width: 420px;
+    height: 420px;
+  }
+
+  .blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #7c3aed, #06b6d4);
+    filter: blur(60px);
+    border-radius: 50%;
+    top: 50px;
+    left: 50px;
+    opacity: 0.7;
+  }
+
+  .card {
+    position: absolute;
+    width: 180px;
+    padding: 15px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+  }
+
+  .c1 { top: 20px; left: 20px; }
+  .c2 { bottom: 40px; right: 10px; }
+  .c3 { top: 180px; right: 60px; }
+
+  /* SERVICES */
+  .section {
+    padding: 80px 8%;
+    text-align: center;
+  }
+
+  .section h2 {
+    font-size: 34px;
+    margin-bottom: 40px;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .service {
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.3s;
+  }
+
+  .service:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .service h3 {
+    margin-bottom: 10px;
+    color: #06b6d4;
+  }
+
+  /* STATS */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    font-size: 28px;
+    font-weight: bold;
+    color: #7c3aed;
+  }
+
+  .stat small {
+    display: block;
+    color: #94a3b8;
+    font-size: 13px;
+  }
+
+  /* CTA */
+  .cta {
+    margin: 80px 8%;
+    padding: 60px;
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.2));
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+    font-size: 13px;
+  }
+
+  @media(max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Lumora Studio</div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#stats">Impact</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="tag">DIGITAL MARKETING AGENCY</div>
+    <h1>We design growth that actually converts.</h1>
+    <p>
+      A creative performance agency helping brands scale with strategy,
+      design, and high-impact marketing systems.
+    </p>
+    <button class="btn">Start Your Growth</button>
+  </div>
+
+  <div class="hero-visual">
+    <div class="blob"></div>
+
+    <div class="card c1">
+      📈 240% Growth
+      <br><small>Avg ROI Increase</small>
+    </div>
+
+    <div class="card c2">
+      🎯 120+ Clients
+      <br><small>Worldwide</small>
+    </div>
+
+    <div class="card c3">
+      🚀 Fast Scaling
+      <br><small>30-Day Results</small>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <h2>What We Do</h2>
+
+  <div class="services">
+    <div class="service">
+      <h3>Brand Strategy</h3>
+      <p>We build strong identities that people remember and trust.</p>
+    </div>
+
+    <div class="service">
+      <h3>Performance Ads</h3>
+      <p>High-converting Google & Meta campaigns that scale revenue.</p>
+    </div>
+
+    <div class="service">
+      <h3>SEO Growth</h3>
+      <p>Rank higher, get organic traffic, and dominate search results.</p>
+    </div>
+
+    <div class="service">
+      <h3>Creative Content</h3>
+      <p>Scroll-stopping visuals, reels, and storytelling content.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section" id="stats">
+  <h2>Our Impact</h2>
+
+  <div class="stats">
+    <div>
+      <div class="stat">3.2M+</div>
+      <small>Leads Generated</small>
+    </div>
+
+    <div>
+      <div class="stat">98%</div>
+      <small>Client Satisfaction</small>
+    </div>
+
+    <div>
+      <div class="stat">45+</div>
+      <small>Countries Served</small>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>Ready to scale your brand?</h2>
+  <p style="color:#cbd5e1;margin:10px 0 20px;">
+    Let’s build your next growth system together.
+  </p>
+  <button class="btn">Book a Free Call</button>
+</section>
+
+<footer>
+  © 2026 Lumora Studio — All rights reserved.
+</footer>
+
+</body>
+</html>
