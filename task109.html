@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Management App</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+header{
+    background:#4f46e5;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.event-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.event-card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.event-card:hover{
+    transform:translateY(-5px);
+}
+
+.event-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.event-content{
+    padding:15px;
+}
+
+.event-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.event-info{
+    color:#666;
+    margin-bottom:8px;
+}
+
+.event-desc{
+    margin:12px 0;
+    color:#444;
+}
+
+.btn{
+    display:block;
+    width:100%;
+    background:#4f46e5;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.btn:hover{
+    background:#3730a3;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Event Management App</h1>
+</header>
+
+<div class="container">
+    <div class="event-grid">
+
+        <div class="event-card">
+            <img src="https://picsum.photos/400/250?random=1" alt="Event">
+            <div class="event-content">
+                <div class="event-title">Tech Conference 2026</div>
+                <div class="event-info">📅 25 July 2026</div>
+                <div class="event-info">📍 Chennai</div>
+                <div class="event-desc">
+                    Join industry experts and developers for the latest technology trends.
+                </div>
+                <button class="btn" onclick="registerEvent('Tech Conference 2026')">
+                    Register
+                </button>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://picsum.photos/400/250?random=2" alt="Event">
+            <div class="event-content">
+                <div class="event-title">Music Festival</div>
+                <div class="event-info">📅 12 August 2026</div>
+                <div class="event-info">📍 Bangalore</div>
+                <div class="event-desc">
+                    Enjoy live performances from top artists and bands.
+                </div>
+                <button class="btn" onclick="registerEvent('Music Festival')">
+                    Register
+                </button>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://picsum.photos/400/250?random=3" alt="Event">
+            <div class="event-content">
+                <div class="event-title">Startup Meetup</div>
+                <div class="event-info">📅 5 September 2026</div>
+                <div class="event-info">📍 Coimbatore</div>
+                <div class="event-desc">
+                    Network with entrepreneurs, investors, and innovators.
+                </div>
+                <button class="btn" onclick="registerEvent('Startup Meetup')">
+                    Register
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function registerEvent(eventName){
+    alert("Successfully registered for " + eventName + "!");
+}
+</script>
+
+</body>
+</html>
