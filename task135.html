@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Low-Fidelity Wireframe Builder</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#f3f4f6;
+  display:flex;
+  height:100vh;
+}
+
+/* LEFT TOOLBAR */
+.toolbar{
+  width:260px;
+  background:#e5e7eb;
+  padding:20px;
+  border-right:2px solid #d1d5db;
+}
+
+.toolbar h2{
+  margin-bottom:15px;
+  font-size:18px;
+}
+
+.btn{
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border:none;
+  background:#fff;
+  border:2px dashed #9ca3af;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:#f9fafb;
+}
+
+/* CANVAS */
+.canvas{
+  flex:1;
+  position:relative;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #f9fafb,
+      #f9fafb 29px,
+      #e5e7eb 30px
+    );
+}
+
+/* WIREFRAME ELEMENTS */
+.block{
+  position:absolute;
+  border:2px solid #6b7280;
+  background:rgba(255,255,255,0.6);
+  padding:10px;
+  cursor:move;
+  user-select:none;
+}
+
+.header{
+  width:200px;
+  height:40px;
+  font-weight:bold;
+  text-align:center;
+}
+
+.text{
+  width:180px;
+  height:60px;
+  font-size:12px;
+}
+
+.image{
+  width:160px;
+  height:100px;
+  background:#d1d5db;
+}
+
+.button{
+  width:120px;
+  height:35px;
+  text-align:center;
+  background:#e5e7eb;
+  font-weight:bold;
+}
+
+.card{
+  width:180px;
+  height:120px;
+  background:#f9fafb;
+}
+
+/* FOOTER CONTROLS */
+.bottom{
+  margin-top:20px;
+}
+
+.clear{
+  width:100%;
+  padding:10px;
+  border:none;
+  background:#ef4444;
+  color:white;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <h2>Wireframe Tools</h2>
+
+  <button class="btn" onclick="addBlock('header')">Header</button>
+  <button class="btn" onclick="addBlock('text')">Text</button>
+  <button class="btn" onclick="addBlock('image')">Image</button>
+  <button class="btn" onclick="addBlock('button')">Button</button>
+  <button class="btn" onclick="addBlock('card')">Card</button>
+
+  <div class="bottom">
+    <button class="clear" onclick="clearCanvas()">Clear Canvas</button>
+  </div>
+</div>
+
+<!-- CANVAS -->
+<div class="canvas" id="canvas"></div>
+
+<script>
+
+let canvas = document.getElementById("canvas");
+
+let saved = JSON.parse(localStorage.getItem("wireframes") || "[]");
+
+function addBlock(type){
+
+  let block = document.createElement("div");
+  block.classList.add("block", type);
+
+  block.style.left = "100px";
+  block.style.top = "100px";
+
+  block.innerText = type.toUpperCase();
+
+  makeDraggable(block);
+
+  canvas.appendChild(block);
+
+  saved.push({
+    type,
+    x:100,
+    y:100
+  });
+
+  save();
+}
+
+/* Drag */
+function makeDraggable(el){
+
+  let offsetX, offsetY, dragging = false;
+
+  el.onmousedown = function(e){
+    dragging = true;
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
+  }
+
+  document.onmousemove = function(e){
+    if(dragging){
+      el.style.left = (e.pageX - offsetX) + "px";
+      el.style.top = (e.pageY - offsetY) + "px";
+    }
+  }
+
+  document.onmouseup = function(){
+    dragging = false;
+  }
+}
+
+function clearCanvas(){
+  canvas.innerHTML = "";
+  localStorage.removeItem("wireframes");
+}
+
+function save(){
+  localStorage.setItem("wireframes", JSON.stringify(saved));
+}
+
+/* Load saved */
+function load(){
+  saved.forEach(item=>{
+    let block = document.createElement("div");
+    block.classList.add("block", item.type);
+    block.innerText = item.type.toUpperCase();
+
+    block.style.left = item.x + "px";
+    block.style.top = item.y + "px";
+
+    makeDraggable(block);
+    canvas.appendChild(block);
+  });
+}
+
+load();
+
+</script>
+
+</body>
+</html>
