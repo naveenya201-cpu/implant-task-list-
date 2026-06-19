@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usability Testing Lab</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Outfit',sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top left,#7f1d1d,#480101 45%);
+    color:white;
+    min-height:100vh;
+}
+
+.wrapper{
+    display:grid;
+    grid-template-columns:380px 1fr;
+    gap:30px;
+    padding:30px;
+}
+
+.sidebar{
+    position:sticky;
+    top:20px;
+    height:fit-content;
+
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:30px;
+    padding:30px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.logo span{
+    color:#ff4d6d;
+}
+
+.subtitle{
+    color:#bbb;
+    margin-bottom:25px;
+}
+
+input,
+textarea,
+select{
+
+    width:100%;
+    background:rgba(255,255,255,.05);
+    border:none;
+    outline:none;
+
+    padding:14px;
+    margin-bottom:15px;
+
+    border-radius:14px;
+    color:white;
+}
+
+textarea{
+    min-height:100px;
+    resize:none;
+}
+
+button{
+
+    width:100%;
+    border:none;
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff4d6d,
+        #c1121f
+    );
+
+    color:white;
+    padding:15px;
+    border-radius:14px;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+}
+
+.main{
+    padding:10px;
+}
+
+.header{
+    margin-bottom:35px;
+}
+
+.header h1{
+    font-size:50px;
+    line-height:1;
+}
+
+.header p{
+    color:#bbb;
+    margin-top:10px;
+}
+
+.timeline{
+    position:relative;
+}
+
+.timeline::before{
+    content:'';
+    position:absolute;
+
+    left:25px;
+    top:0;
+    bottom:0;
+
+    width:2px;
+    background:#ff4d6d;
+}
+
+.test-card{
+
+    margin-left:70px;
+    margin-bottom:25px;
+
+    background:rgba(255,255,255,.04);
+    backdrop-filter:blur(15px);
+
+    border-radius:24px;
+    padding:25px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    position:relative;
+}
+
+.test-card::before{
+    content:'';
+    width:18px;
+    height:18px;
+
+    background:#ff4d6d;
+    border-radius:50%;
+
+    position:absolute;
+    left:-54px;
+    top:30px;
+
+    box-shadow:
+    0 0 20px #ff4d6d;
+}
+
+.user{
+    font-size:20px;
+    font-weight:600;
+}
+
+.task{
+    color:#ff758f;
+    margin-top:5px;
+}
+
+.badge{
+
+    display:inline-block;
+    margin-top:15px;
+
+    padding:8px 14px;
+    border-radius:999px;
+
+    font-size:12px;
+    font-weight:600;
+}
+
+.success{
+    background:#14532d;
+}
+
+.partial{
+    background:#78350f;
+}
+
+.failed{
+    background:#7f1d1d;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:15px;
+}
+
+.box{
+    background:rgba(255,255,255,.03);
+    padding:15px;
+    border-radius:14px;
+}
+
+.label{
+    color:#999;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:6px;
+}
+
+.date{
+    color:#888;
+    margin-top:15px;
+    font-size:12px;
+}
+
+@media(max-width:1000px){
+
+.wrapper{
+    grid-template-columns:1fr;
+}
+
+.sidebar{
+    position:relative;
+}
+
+.header h1{
+    font-size:38px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+
+<div class="logo">
+Cherry<span>Lab</span>
+</div>
+
+<div class="subtitle">
+Record usability testing sessions and observations.
+</div>
+
+<input id="participant" placeholder="Participant Name">
+
+<input id="task" placeholder="Task Tested">
+
+<select id="status">
+<option>Success</option>
+<option>Partial Success</option>
+<option>Failed</option>
+</select>
+
+<input id="time" placeholder="Completion Time (seconds)">
+
+<textarea id="issues" placeholder="Observed Issues"></textarea>
+
+<textarea id="feedback" placeholder="Participant Feedback"></textarea>
+
+<button onclick="saveTest()">
+Save Session
+</button>
+
+</div>
+
+<div class="main">
+
+<div class="header">
+<h1>Usability Testing Timeline</h1>
+<p>Track sessions, pain points and user behavior.</p>
+</div>
+
+<div class="timeline" id="timeline"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let tests =
+JSON.parse(
+localStorage.getItem('cherryTests') || '[]'
+);
+
+function saveTest(){
+
+const test={
+participant:
+document.getElementById('participant').value,
+
+task:
+document.getElementById('task').value,
+
+status:
+document.getElementById('status').value,
+
+time:
+document.getElementById('time').value,
+
+issues:
+document.getElementById('issues').value,
+
+feedback:
+document.getElementById('feedback').value,
+
+date:
+new Date().toLocaleString()
+};
+
+tests.unshift(test);
+
+localStorage.setItem(
+'cherryTests',
+JSON.stringify(tests)
+);
+
+render();
+
+document
+.querySelectorAll('input,textarea')
+.forEach(el=>el.value='');
+}
+
+function render(){
+
+const timeline =
+document.getElementById('timeline');
+
+timeline.innerHTML='';
+
+tests.forEach(test=>{
+
+let cls='success';
+
+if(test.status==='Partial Success')
+cls='partial';
+
+if(test.status==='Failed')
+cls='failed';
+
+timeline.innerHTML += `
+<div class="test-card">
+
+<div class="user">
+${test.participant}
+</div>
+
+<div class="task">
+${test.task}
+</div>
+
+<div class="badge ${cls}">
+${test.status}
+</div>
+
+<div class="grid">
+
+<div class="box">
+<div class="label">Completion Time</div>
+${test.time} sec
+</div>
+
+<div class="box">
+<div class="label">Issues</div>
+${test.issues}
+</div>
+
+<div class="box">
+<div class="label">Feedback</div>
+${test.feedback}
+</div>
+
+</div>
+
+<div class="date">
+${test.date}
+</div>
+
+</div>
+`;
+});
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
