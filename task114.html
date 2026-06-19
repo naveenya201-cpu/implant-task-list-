@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarePlus Hospital</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f9fc;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#82acec;
+    color:white;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+/* Hero Section */
+.hero{
+    min-height:85vh;
+    background:linear-gradient(rgba(147, 188, 249, 0.8),
+    rgba(121, 169, 246, 0.8)),
+    url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=80');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero-content h1{
+    font-size:58px;
+    margin-bottom:15px;
+}
+
+.hero-content p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:white;
+    color:#0d6efd;
+    padding:14px 28px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* Emergency Bar */
+.emergency{
+    background:#dc3545;
+    color:white;
+    text-align:center;
+    padding:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* Sections */
+section{
+    padding:70px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:38px;
+    color:#0d6efd;
+}
+
+/* Services */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.card h3{
+    margin:15px 0;
+}
+
+/* Doctors */
+.doctors{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.doctor{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.doctor img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+}
+
+.doctor-info{
+    padding:20px;
+    text-align:center;
+}
+
+/* Appointment Form */
+.appointment{
+    background:white;
+    max-width:700px;
+    margin:auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+input, select, textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#0d6efd;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Stats */
+.stats{
+    background:#0d6efd;
+    color:white;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    text-align:center;
+    gap:20px;
+}
+
+.stat{
+    padding:30px;
+}
+
+.stat h2{
+    font-size:40px;
+}
+
+/* Footer */
+footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+    nav ul{
+        display:none;
+    }
+
+    .hero-content h1{
+        font-size:40px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">CarePlus Hospital</div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Departments</a></li>
+            <li><a href="#">Doctors</a></li>
+            <li><a href="#">Appointments</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="emergency">
+    🚑 Emergency Helpline: +91 98765 43210
+</div>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Your Health Is Our Priority</h1>
+        <p>
+            Advanced healthcare services with experienced doctors
+            and modern medical facilities.
+        </p>
+        <a href="#appointment" class="btn">Book Appointment</a>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Our Services</h2>
+
+    <div class="services">
+        <div class="card">
+            <h3>Cardiology</h3>
+            <p>Comprehensive heart care and treatments.</p>
+        </div>
+
+        <div class="card">
+            <h3>Neurology</h3>
+            <p>Expert diagnosis and neurological care.</p>
+        </div>
+
+        <div class="card">
+            <h3>Pediatrics</h3>
+            <p>Specialized healthcare for children.</p>
+        </div>
+
+        <div class="card">
+            <h3>Orthopedics</h3>
+            <p>Advanced bone and joint treatments.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Our Specialists</h2>
+
+    <div class="doctors">
+        <div class="doctor">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80">
+            <div class="doctor-info">
+                <h3>Dr. Sarah Johnson</h3>
+                <p>Senior Cardiologist</p>
+            </div>
+        </div>
+
+        <div class="doctor">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80">
+            <div class="doctor-info">
+                <h3>Dr. Michael Lee</h3>
+                <p>Neurologist</p>
+            </div>
+        </div>
+
+        <div class="doctor">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=800&q=80">
+            <div class="doctor-info">
+                <h3>Dr. Priya Sharma</h3>
+                <p>Pediatric Specialist</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat">
+        <h2>50+</h2>
+        <p>Expert Doctors</p>
+    </div>
+
+    <div class="stat">
+        <h2>25K+</h2>
+        <p>Patients Treated</p>
+    </div>
+
+    <div class="stat">
+        <h2>15+</h2>
+        <p>Departments</p>
+    </div>
+
+    <div class="stat">
+        <h2>24/7</h2>
+        <p>Emergency Care</p>
+    </div>
+</section>
+
+<section id="appointment">
+    <h2 class="section-title">Book an Appointment</h2>
+
+    <div class="appointment">
+        <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number" required>
+
+            <select>
+                <option>Select Department</option>
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>Pediatrics</option>
+                <option>Orthopedics</option>
+            </select>
+
+            <textarea rows="4" placeholder="Describe your concern"></textarea>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 CarePlus Hospital. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
