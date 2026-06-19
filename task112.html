@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Spice Restaurant</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#fafafa;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#111;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 8%;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#ff9800;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:#ff9800;
+}
+
+/* Hero Section */
+.hero{
+    height:90vh;
+    background:
+    linear-gradient(rgba(0,0,0,.6),rgba(189, 184, 184, 0.6)),
+    url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.hero-content p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#ff9800;
+    color:white;
+    padding:12px 28px;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+.btn:hover{
+    background:#e68900;
+}
+
+/* Sections */
+section{
+    padding:70px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:40px;
+    color:#222;
+}
+
+/* Menu */
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:#ff9800;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+/* About */
+.about{
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* Contact */
+.contact{
+    background:#f5f5f5;
+    text-align:center;
+}
+
+.contact p{
+    margin:10px 0;
+}
+
+/* Footer */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Royal Spice</div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Royal Spice</h1>
+        <p>Delicious Food • Fresh Ingredients • Great Experience</p>
+        <a href="#" class="btn">Reserve a Table</a>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Our Special Menu</h2>
+
+    <div class="menu">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" alt="">
+            <div class="card-content">
+                <h3>Naan</h3>
+                <p>Authentic aromatic naan with rich flavors.</p>
+                <div class="price">₹299</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="">
+            <div class="card-content">
+                <h3>Grilled Steak</h3>
+                <p>Juicy steak grilled to perfection.</p>
+                <div class="price">₹499</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80" alt="">
+            <div class="card-content">
+                <h3>Cheese Pizza</h3>
+                <p>Loaded with mozzarella and fresh toppings.</p>
+                <div class="price">₹349</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">About Us</h2>
+
+    <div class="about">
+        <p>
+            Royal Spice Restaurant serves delicious cuisine prepared
+            with premium ingredients and authentic recipes. We focus
+            on delivering exceptional dining experiences for families,
+            friends, and food lovers.
+        </p>
+    </div>
+</section>
+
+<section class="contact">
+    <h2 class="section-title">Contact Us</h2>
+
+    <p>📍 123 Food Street, Chennai, India</p>
+    <p>📞 +91 98765 43210</p>
+    <p>✉️ info@royalspice.com</p>
+</section>
+
+<footer>
+    <p>© 2026 Royal Spice Restaurant. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
