@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitor Analysis Studio</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Nunito',sans-serif;
+}
+
+body{
+  background:linear-gradient(180deg,#fff7fb,#ffeef5);
+  min-height:100vh;
+  overflow-x:hidden;
+  color:#5f3b4c;
+}
+
+/* Cute floating blobs */
+
+.blob{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(40px);
+  z-index:-1;
+}
+
+.blob1{
+  width:300px;
+  height:300px;
+  background:#ffd6e7;
+  top:-100px;
+  left:-80px;
+}
+
+.blob2{
+  width:350px;
+  height:350px;
+  background:#ffc2d1;
+  right:-120px;
+  top:120px;
+}
+
+.blob3{
+  width:250px;
+  height:250px;
+  background:#ffe5b8;
+  bottom:-80px;
+  left:30%;
+}
+
+.blob4{
+  width:280px;
+  height:280px;
+  background:#ffdce8;
+  bottom:0;
+  right:10%;
+}
+
+.container{
+  max-width:1300px;
+  margin:auto;
+  padding:40px;
+}
+
+.hero{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.hero h1{
+  font-size:60px;
+  font-weight:800;
+}
+
+.hero span{
+  color:#ff7aa2;
+}
+
+.hero p{
+  color:#8b6877;
+  margin-top:10px;
+  font-size:18px;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:25px;
+}
+
+.panel{
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(20px);
+
+  padding:25px;
+  border-radius:35px;
+
+  border:2px solid rgba(255,255,255,.7);
+
+  box-shadow:
+  0 10px 40px rgba(255,182,193,.25);
+}
+
+.panel h2{
+  margin-bottom:15px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  border:none;
+  outline:none;
+
+  background:#fff;
+
+  padding:14px;
+  border-radius:18px;
+
+  margin-bottom:12px;
+
+  color:#555;
+}
+
+textarea{
+  min-height:90px;
+  resize:none;
+}
+
+button{
+  width:100%;
+  border:none;
+
+  padding:15px;
+
+  border-radius:18px;
+
+  background:linear-gradient(
+  135deg,
+  #ff92b3,
+  #ffb7c5
+  );
+
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+button:hover{
+  transform:translateY(-3px);
+}
+
+.results{
+  display:grid;
+  gap:20px;
+}
+
+.card{
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(20px);
+
+  border-radius:30px;
+  padding:25px;
+
+  border:2px solid rgba(255,255,255,.8);
+
+  box-shadow:
+  0 10px 30px rgba(255,182,193,.2);
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.company{
+  font-size:24px;
+  font-weight:800;
+}
+
+.score{
+  background:#ffdce8;
+  color:#ff5f8f;
+
+  padding:10px 18px;
+  border-radius:999px;
+
+  font-weight:800;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:18px;
+}
+
+.box{
+  background:#fff;
+  padding:15px;
+  border-radius:18px;
+}
+
+.label{
+  color:#ff7aa2;
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.empty{
+  text-align:center;
+  padding:70px;
+  color:#b58395;
+}
+
+@media(max-width:1000px){
+
+.layout{
+  grid-template-columns:1fr;
+}
+
+.hero h1{
+  font-size:42px;
+}
+
+.grid{
+  grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+<div class="blob blob4"></div>
+
+<div class="container">
+
+<div class="hero">
+  <h1> Competitor <span>Analysis</span></h1>
+  <p>Compare competitors, discover opportunities, and track strengths </p>
+</div>
+
+<div class="layout">
+
+  <!-- FORM -->
+
+  <div class="panel">
+
+    <h2> Add Competitor</h2>
+
+    <input id="company" placeholder="Company Name">
+
+    <input id="website" placeholder="Website">
+
+    <input id="score" placeholder="Market Score /100">
+
+    <textarea id="strengths" placeholder="Strengths"></textarea>
+
+    <textarea id="weaknesses" placeholder="Weaknesses"></textarea>
+
+    <textarea id="opportunities" placeholder="Opportunities"></textarea>
+
+    <button onclick="addCompetitor()">
+      Save Competitor 
+    </button>
+
+  </div>
+
+  <!-- RESULTS -->
+
+  <div class="results" id="results">
+
+    <div class="empty">
+       No competitors added yet
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<script>
+
+let competitors =
+JSON.parse(
+localStorage.getItem('cuteCompetitors') || '[]'
+);
+
+function addCompetitor(){
+
+const data = {
+
+company:
+document.getElementById('company').value,
+
+website:
+document.getElementById('website').value,
+
+score:
+document.getElementById('score').value,
+
+strengths:
+document.getElementById('strengths').value,
+
+weaknesses:
+document.getElementById('weaknesses').value,
+
+opportunities:
+document.getElementById('opportunities').value
+
+};
+
+competitors.unshift(data);
+
+localStorage.setItem(
+'cuteCompetitors',
+JSON.stringify(competitors)
+);
+
+render();
+
+document
+.querySelectorAll('input,textarea')
+.forEach(el=>el.value='');
+
+}
+
+function render(){
+
+const results =
+document.getElementById('results');
+
+if(competitors.length===0){
+
+results.innerHTML=`
+<div class="empty">
+🌷 No competitors added yet
+</div>
+`;
+
+return;
+}
+
+results.innerHTML='';
+
+competitors.forEach(item=>{
+
+results.innerHTML += `
+<div class="card">
+
+<div class="header">
+
+<div class="company">
+🎀 ${item.company}
+</div>
+
+<div class="score">
+${item.score}
+</div>
+
+</div>
+
+<p style="margin-top:10px;">
+🌐 ${item.website}
+</p>
+
+<div class="grid">
+
+<div class="box">
+<div class="label">💖 Strengths</div>
+${item.strengths}
+</div>
+
+<div class="box">
+<div class="label">🌧 Weaknesses</div>
+${item.weaknesses}
+</div>
+
+<div class="box">
+<div class="label">✨ Opportunities</div>
+${item.opportunities}
+</div>
+
+<div class="box">
+<div class="label">📈 Market Score</div>
+${item.score}/100
+</div>
+
+</div>
+
+</div>
+`;
+});
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
