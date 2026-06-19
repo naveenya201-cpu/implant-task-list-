@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Cab Booking App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Cab Booking</h2>
+
+    <input type="text" id="pickup" placeholder="Pickup Location">
+    <input type="text" id="drop" placeholder="Drop Location">
+
+    <button onclick="bookCab()">Book Cab</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function bookCab() {
+    let pickup = document.getElementById("pickup").value;
+    let drop = document.getElementById("drop").value;
+
+    if (pickup === "" || drop === "") {
+        document.getElementById("result").innerHTML =
+            "Please enter both locations.";
+        return;
+    }
+
+    let bookingId = "CAB" + Math.floor(Math.random() * 10000);
+
+    document.getElementById("result").innerHTML =
+        "✅ Booking Confirmed!<br>" +
+        "Booking ID: " + bookingId + "<br>" +
+        "From: " + pickup + "<br>" +
+        "To: " + drop;
+}
+</script>
+
+</body>
+</html>
