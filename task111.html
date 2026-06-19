@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bright Future Academy</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#0d47a1;
+    color:white;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#ffeb3b;
+}
+
+/* Hero */
+.hero{
+    background:linear-gradient(rgba(13,71,161,.7),
+    rgba(13,71,161,.7)),
+    url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80');
+    background-size:cover;
+    background-position:center;
+    height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#ff9800;
+    color:white;
+    padding:12px 28px;
+    text-decoration:none;
+    border-radius:6px;
+    font-size:18px;
+}
+
+.btn:hover{
+    background:#f57c00;
+}
+
+/* Sections */
+section{
+    padding:70px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:36px;
+    color:#0d47a1;
+    margin-bottom:40px;
+}
+
+/* Courses */
+.courses{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.card h3{
+    color:#0d47a1;
+    margin-bottom:10px;
+}
+
+/* Stats */
+.stats{
+    background:#0d47a1;
+    color:white;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    text-align:center;
+}
+
+.stat h2{
+    font-size:40px;
+}
+
+.stat p{
+    font-size:18px;
+}
+
+/* Contact */
+.contact{
+    text-align:center;
+}
+
+.contact form{
+    max-width:500px;
+    margin:auto;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    background:#0d47a1;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#08306b;
+}
+
+/* Footer */
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Bright Future Academy</div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Faculty</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>Empowering Students for Success</h1>
+        <p>Quality Education • Expert Faculty • Bright Careers</p>
+        <a href="#" class="btn">Apply Now</a>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Our Courses</h2>
+
+    <div class="courses">
+        <div class="card">
+            <h3>Computer Science</h3>
+            <p>Learn programming, AI, and software development.</p>
+        </div>
+
+        <div class="card">
+            <h3>Business Management</h3>
+            <p>Build leadership and management skills.</p>
+        </div>
+
+        <div class="card">
+            <h3>Data Science</h3>
+            <p>Master analytics, machine learning, and big data.</p>
+        </div>
+
+        <div class="card">
+            <h3>Digital Marketing</h3>
+            <p>Learn SEO, social media, and online branding.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat">
+        <h2>5000+</h2>
+        <p>Students</p>
+    </div>
+
+    <div class="stat">
+        <h2>150+</h2>
+        <p>Faculty Members</p>
+    </div>
+
+    <div class="stat">
+        <h2>50+</h2>
+        <p>Courses</p>
+    </div>
+
+    <div class="stat">
+        <h2>95%</h2>
+        <p>Placement Rate</p>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Why Choose Us?</h2>
+
+    <div class="courses">
+        <div class="card">
+            <h3>Experienced Faculty</h3>
+            <p>Learn from industry experts and skilled educators.</p>
+        </div>
+
+        <div class="card">
+            <h3>Modern Campus</h3>
+            <p>State-of-the-art classrooms and laboratories.</p>
+        </div>
+
+        <div class="card">
+            <h3>Career Support</h3>
+            <p>Internships, placement assistance, and guidance.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact">
+    <h2 class="section-title">Contact Us</h2>
+
+    <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Inquiry</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Bright Future Academy. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
