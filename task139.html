@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tablet Wireframe</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    padding:12px;
+}
+
+.container{
+    max-width:900px;
+    height:100vh;
+    margin:auto;
+    display:grid;
+    gap:12px;
+    grid-template-rows:
+        70px
+        120px
+        1fr
+        70px;
+}
+
+/* Wireframe Boxes */
+.section{
+    background:#fff;
+    border:2px dashed #777;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    color:#555;
+}
+
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.logo,
+.menu{
+    border:2px dashed #aaa;
+    padding:10px 20px;
+}
+
+/* Cards Row */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.card{
+    background:#fff;
+    border:2px dashed #777;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* Main Content */
+.main{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:12px;
+}
+
+.content,
+.sidebar{
+    background:#fff;
+    border:2px dashed #777;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* Bottom Navigation */
+.footer{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.nav-item{
+    background:#fff;
+    border:2px dashed #777;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="section header">
+        <div class="logo">Logo</div>
+        <div class="menu">Menu</div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="cards">
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+    </div>
+
+    <!-- Main Area -->
+    <div class="main">
+        <div class="content">Primary Content</div>
+        <div class="sidebar">Side Panel</div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="footer">
+        <div class="nav-item">Home</div>
+        <div class="nav-item">Search</div>
+        <div class="nav-item">Messages</div>
+        <div class="nav-item">Profile</div>
+    </div>
+
+</div>
+
+</body>
+</html>
