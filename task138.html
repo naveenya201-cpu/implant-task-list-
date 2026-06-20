@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desktop Wireframe</title>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: #f2f2f2;
+        display: grid;
+        grid-template-columns: 220px 1fr 250px;
+        grid-template-rows: 70px 1fr 50px;
+        grid-template-areas:
+            "sidebar header header"
+            "sidebar content rightpanel"
+            "sidebar footer footer";
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .box {
+        border: 2px dashed #666;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        font-weight: bold;
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header {
+        grid-area: header;
+    }
+
+    .content {
+        grid-area: content;
+        display: grid;
+        grid-template-rows: 150px 1fr;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .hero,
+    .workspace {
+        border: 2px dashed #999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rightpanel {
+        grid-area: rightpanel;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer {
+        grid-area: footer;
+    }
+
+    .menu-item,
+    .widget {
+        width: 85%;
+        height: 50px;
+        border: 2px dashed #999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+</head>
+<body>
+
+    <div class="box sidebar">
+        <div class="menu-item">Logo</div>
+        <div class="menu-item">Dashboard</div>
+        <div class="menu-item">Projects</div>
+        <div class="menu-item">Reports</div>
+        <div class="menu-item">Settings</div>
+    </div>
+
+    <div class="box header">Top Toolbar / Search / User Profile</div>
+
+    <div class="content box">
+        <div class="hero">Hero Section / Summary Cards</div>
+        <div class="workspace">Main Workspace Area</div>
+    </div>
+
+    <div class="box rightpanel">
+        <div class="widget">Notifications</div>
+        <div class="widget">Tasks</div>
+        <div class="widget">Activity Feed</div>
+    </div>
+
+    <div class="box footer">Footer Information</div>
+
+</body>
+</html>
