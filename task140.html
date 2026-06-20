@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding Wireframes</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f6fa;
+    display:flex;
+    gap:30px;
+    padding:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.screen{
+    width:280px;
+    height:560px;
+    background:white;
+    border-radius:24px;
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+.hero{
+    height:220px;
+    background:#7C4DFF; /* Pop of colour */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.illustration{
+    width:120px;
+    height:120px;
+    border:3px dashed rgba(255,255,255,.8);
+    border-radius:20px;
+}
+
+.content{
+    padding:32px 24px;
+    text-align:center;
+    flex:1;
+}
+
+.title{
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.text{
+    color:#666;
+    line-height:1.5;
+}
+
+.footer{
+    padding:24px;
+}
+
+.btn{
+    background:#7C4DFF;
+    color:white;
+    border:none;
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:16px;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#ddd;
+}
+
+.active{
+    background:#7C4DFF;
+}
+</style>
+</head>
+<body>
+
+<!-- Screen 1 -->
+<div class="screen">
+    <div class="hero">
+        <div class="illustration"></div>
+    </div>
+    <div class="content">
+        <div class="title">Welcome</div>
+        <div class="text">
+            Discover a smarter way to organize your tasks and projects.
+        </div>
+    </div>
+    <div class="footer">
+        <button class="btn">Next</button>
+        <div class="dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Screen 2 -->
+<div class="screen">
+    <div class="hero">
+        <div class="illustration"></div>
+    </div>
+    <div class="content">
+        <div class="title">Stay Productive</div>
+        <div class="text">
+            Track progress, manage deadlines, and collaborate easily.
+        </div>
+    </div>
+    <div class="footer">
+        <button class="btn">Next</button>
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Screen 3 -->
+<div class="screen">
+    <div class="hero">
+        <div class="illustration"></div>
+    </div>
+    <div class="content">
+        <div class="title">Achieve More</div>
+        <div class="text">
+            Reach your goals faster with personalized insights.
+        </div>
+    </div>
+    <div class="footer">
+        <button class="btn">Get Started</button>
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Signup Screen -->
+<div class="screen">
+    <div class="content" style="padding-top:80px;">
+        <div class="title">Create Account</div>
+
+        <div style="margin-top:30px;">
+            <div style="border:2px dashed #ccc; padding:14px; border-radius:10px; margin-bottom:16px;">
+                Email
+            </div>
+
+            <div style="border:2px dashed #ccc; padding:14px; border-radius:10px; margin-bottom:24px;">
+                Password
+            </div>
+
+            <button class="btn">Sign Up</button>
+
+            <div style="margin-top:16px;color:#777;">
+                Already have an account?
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
