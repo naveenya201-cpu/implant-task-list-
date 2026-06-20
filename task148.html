@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Transitions Demo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f3f4f6;
+    overflow:hidden;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    padding:20px;
+    background:#4f46e5;
+}
+
+nav button{
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:#4f46e5;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all .3s ease;
+}
+
+nav button:hover{
+    transform:translateY(-2px);
+}
+
+.container{
+    position:relative;
+    height:calc(100vh - 80px);
+}
+
+.page{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    opacity:0;
+    visibility:hidden;
+    transform:translateX(100px);
+    transition:
+        opacity .5s ease,
+        transform .5s ease,
+        visibility .5s;
+}
+
+.page.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(0);
+}
+
+.page h1{
+    margin-bottom:10px;
+}
+
+.home{
+    background:#dbeafe;
+}
+
+.about{
+    background:#dcfce7;
+}
+
+.services{
+    background:#fef3c7;
+}
+
+.contact{
+    background:#fee2e2;
+}
+
+/* Scale animation */
+.zoom-enter{
+    animation:zoomIn .5s ease;
+}
+
+@keyframes zoomIn{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('services')">Services</button>
+    <button onclick="showPage('contact')">Contact</button>
+</nav>
+
+<div class="container">
+
+    <section id="home" class="page home active">
+        <h1>Home</h1>
+        <p>Welcome to the animated prototype.</p>
+    </section>
+
+    <section id="about" class="page about">
+        <h1>About</h1>
+        <p>Learn more about our company.</p>
+    </section>
+
+    <section id="services" class="page services">
+        <h1>Services</h1>
+        <p>Explore what we offer.</p>
+    </section>
+
+    <section id="contact" class="page contact">
+        <h1>Contact</h1>
+        <p>Get in touch with us.</p>
+    </section>
+
+</div>
+
+<script>
+function showPage(pageId){
+
+    const pages = document.querySelectorAll('.page');
+
+    pages.forEach(page => {
+        page.classList.remove('active');
+        page.classList.remove('zoom-enter');
+    });
+
+    const target = document.getElementById(pageId);
+
+    target.classList.add('active');
+    target.classList.add('zoom-enter');
+}
+</script>
+
+</body>
+</html>
