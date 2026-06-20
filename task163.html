@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Icon Library</title>
+
+<style>
+:root{
+    --bg:#0b1220;
+    --card:#111c33;
+    --text:#e5e7eb;
+    --muted:#94a3b8;
+    --primary:#6366f1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter, Arial, sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    padding:40px;
+}
+
+/* Layout */
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+p{
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+/* GRID */
+.icon-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:12px;
+}
+
+/* ICON CARD */
+.icon-card{
+    background:var(--card);
+    padding:16px;
+    border-radius:14px;
+    text-align:center;
+    cursor:pointer;
+    transition:.3s;
+    border:1px solid #1f2a44;
+}
+
+.icon-card:hover{
+    transform:translateY(-5px);
+    border-color:var(--primary);
+}
+
+/* ICON BASE */
+.icon{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:8px;
+    transition:.3s;
+}
+
+/* SIZE VARIANTS */
+.sm{ font-size:16px; }
+.md{ font-size:24px; }
+.lg{ font-size:36px; }
+
+/* STYLE VARIANTS */
+.outline{
+    filter:drop-shadow(0 0 0 var(--text));
+}
+
+.filled{
+    color:var(--primary);
+}
+
+/* HOVER EFFECT */
+.icon-card:hover .icon{
+    transform:scale(1.2);
+}
+
+/* LABEL */
+.label{
+    font-size:12px;
+    color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Icon Library</h1>
+    <p>Reusable scalable icon system with size & style variants.</p>
+
+    <div class="icon-grid">
+
+        <!-- HOME -->
+        <div class="icon-card">
+            <div class="icon md outline">🏠</div>
+            <div class="label">Home</div>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="icon-card">
+            <div class="icon md outline">🔍</div>
+            <div class="label">Search</div>
+        </div>
+
+        <!-- USER -->
+        <div class="icon-card">
+            <div class="icon md outline">👤</div>
+            <div class="label">User</div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="icon-card">
+            <div class="icon md outline">⚙️</div>
+            <div class="label">Settings</div>
+        </div>
+
+        <!-- NOTIFICATION -->
+        <div class="icon-card">
+            <div class="icon md outline">🔔</div>
+            <div class="label">Alert</div>
+        </div>
+
+        <!-- MAIL -->
+        <div class="icon-card">
+            <div class="icon md outline">✉️</div>
+            <div class="label">Mail</div>
+        </div>
+
+        <!-- LOCK -->
+        <div class="icon-card">
+            <div class="icon md outline">🔒</div>
+            <div class="label">Security</div>
+        </div>
+
+        <!-- HEART -->
+        <div class="icon-card">
+            <div class="icon md filled">❤️</div>
+            <div class="label">Favorite</div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
