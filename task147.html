@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro Interactions Demo</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:30px;
+    padding:50px;
+}
+
+/* Animated Button */
+.btn{
+    background:#4f46e5;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px) scale(1.05);
+}
+
+.btn:active{
+    transform:scale(.95);
+}
+
+/* Like Button */
+.like-btn{
+    font-size:40px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.liked{
+    color:red;
+    animation:pulse .4s;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.4);}
+    100%{transform:scale(1);}
+}
+
+/* Toggle */
+.switch{
+    position:relative;
+    width:70px;
+    height:35px;
+}
+
+.switch input{
+    display:none;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+    background:#ccc;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.slider:before{
+    content:"";
+    position:absolute;
+    width:27px;
+    height:27px;
+    left:4px;
+    top:4px;
+    background:white;
+    border-radius:50%;
+    transition:.4s;
+}
+
+input:checked + .slider{
+    background:#10b981;
+}
+
+input:checked + .slider:before{
+    transform:translateX(35px);
+}
+
+/* Card */
+.card{
+    width:250px;
+    padding:20px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+/* Toast */
+.toast{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#111827;
+    color:white;
+    padding:15px 20px;
+    border-radius:10px;
+    opacity:0;
+    transform:translateY(50px);
+    transition:.4s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+</style>
+</head>
+<body>
+
+<h2>Micro-Interactions Demo</h2>
+
+<button class="btn" onclick="showToast()">
+Click Me
+</button>
+
+<div class="like-btn" id="heart">
+❤
+</div>
+
+<label class="switch">
+    <input type="checkbox">
+    <span class="slider"></span>
+</label>
+
+<div class="card">
+    <h3>Interactive Card</h3>
+    <p>Hover over this card.</p>
+</div>
+
+<div class="toast" id="toast">
+Action Completed!
+</div>
+
+<script>
+// Like Animation
+const heart = document.getElementById("heart");
+
+heart.addEventListener("click", () => {
+    heart.classList.toggle("liked");
+});
+
+// Toast Notification
+function showToast(){
+    const toast = document.getElementById("toast");
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+</script>
+
+</body>
+</html>
