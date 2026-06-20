@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Style Guide</title>
+
+<style>
+:root{
+    --bg:#0b1220;
+    --surface:#111c33;
+    --text:#e5e7eb;
+    --muted:#94a3b8;
+
+    /* Primary */
+    --primary-50:#eef2ff;
+    --primary-100:#e0e7ff;
+    --primary-300:#a5b4fc;
+    --primary-500:#6366f1;
+    --primary-700:#4338ca;
+
+    /* Success */
+    --success-500:#10b981;
+
+    /* Warning */
+    --warning-500:#f59e0b;
+
+    /* Danger */
+    --danger-500:#ef4444;
+
+    /* Neutral */
+    --gray-100:#f3f4f6;
+    --gray-300:#d1d5db;
+    --gray-500:#6b7280;
+    --gray-700:#374151;
+    --gray-900:#111827;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter, Arial, sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    padding:40px;
+}
+
+/* Layout */
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.section{
+    margin-bottom:40px;
+}
+
+/* Title */
+h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+p{
+    color:var(--muted);
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:12px;
+    margin-top:15px;
+}
+
+/* COLOR BOX */
+.color-box{
+    height:90px;
+    border-radius:12px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    font-size:12px;
+    padding:8px;
+    color:white;
+    position:relative;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.color-box:hover{
+    transform:scale(1.05);
+}
+
+/* label */
+.label{
+    background:rgba(0,0,0,.4);
+    padding:3px 8px;
+    border-radius:8px;
+    font-size:11px;
+}
+
+/* Card container */
+.card{
+    background:var(--surface);
+    padding:20px;
+    border-radius:16px;
+    margin-top:10px;
+}
+
+/* Section title */
+.title{
+    font-size:20px;
+    margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Color Style Guide</h1>
+    <p>Core color system used across UI components and design tokens.</p>
+
+    <!-- PRIMARY -->
+    <div class="section">
+        <div class="title">Primary Colors</div>
+
+        <div class="card grid">
+
+            <div class="color-box" style="background:var(--primary-50); color:#000;">
+                <span class="label">Primary 50</span>
+            </div>
+
+            <div class="color-box" style="background:var(--primary-100); color:#000;">
+                <span class="label">Primary 100</span>
+            </div>
+
+            <div class="color-box" style="background:var(--primary-300);">
+                <span class="label">Primary 300</span>
+            </div>
+
+            <div class="color-box" style="background:var(--primary-500);">
+                <span class="label">Primary 500</span>
+            </div>
+
+            <div class="color-box" style="background:var(--primary-700);">
+                <span class="label">Primary 700</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SEMANTIC COLORS -->
+    <div class="section">
+        <div class="title">Semantic Colors</div>
+
+        <div class="card grid">
+
+            <div class="color-box" style="background:var(--success-500);">
+                <span class="label">Success</span>
+            </div>
+
+            <div class="color-box" style="background:var(--warning-500);">
+                <span class="label">Warning</span>
+            </div>
+
+            <div class="color-box" style="background:var(--danger-500);">
+                <span class="label">Danger</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- NEUTRALS -->
+    <div class="section">
+        <div class="title">Neutral Scale</div>
+
+        <div class="card grid">
+
+            <div class="color-box" style="background:var(--gray-100); color:#000;">
+                <span class="label">Gray 100</span>
+            </div>
+
+            <div class="color-box" style="background:var(--gray-300); color:#000;">
+                <span class="label">Gray 300</span>
+            </div>
+
+            <div class="color-box" style="background:var(--gray-500);">
+                <span class="label">Gray 500</span>
+            </div>
+
+            <div class="color-box" style="background:var(--gray-700);">
+                <span class="label">Gray 700</span>
+            </div>
+
+            <div class="color-box" style="background:var(--gray-900);">
+                <span class="label">Gray 900</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- UI USAGE -->
+    <div class="section">
+        <div class="title">UI Usage Example</div>
+
+        <div class="card">
+            <p style="color:var(--primary-300);">Primary text link</p>
+            <p style="color:var(--success-500);">Success message</p>
+            <p style="color:var(--warning-500);">Warning alert</p>
+            <p style="color:var(--danger-500);">Error state</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
