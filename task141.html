@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecommerce Checkout Wireframes</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,Arial,sans-serif;
+}
+
+body{
+  background:#f4f6f8;
+  padding:30px;
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.screen{
+  width:340px;
+  height:680px;
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 8px 24px rgba(227, 7, 7, 0.489);
+  overflow:hidden;
+}
+
+.header{
+  background:#14B8A6;
+  color:white;
+  padding:20px;
+  text-align:center;
+  font-size:20px;
+  font-weight:600;
+}
+
+.content{
+  padding:20px;
+}
+
+.section{
+  border:2px dashed #cbd5e1;
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:16px;
+  color:#64748b;
+  text-align:center;
+}
+
+.product{
+  height:80px;
+}
+
+.input{
+  height:50px;
+}
+
+.summary{
+  height:140px;
+}
+
+.button{
+  background:#14B8A6;
+  color:white;
+  text-align:center;
+  padding:14px;
+  border-radius:12px;
+  font-weight:600;
+  margin-top:16px;
+}
+
+.success{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  border:4px dashed #14B8A6;
+  margin:40px auto 20px;
+}
+</style>
+</head>
+<body>
+
+<!-- Cart -->
+<div class="screen">
+  <div class="header">1. Cart Review</div>
+  <div class="content">
+    <div class="section product">Product Item 1</div>
+    <div class="section product">Product Item 2</div>
+    <div class="section summary">Order Summary</div>
+    <div class="button">Continue to Shipping</div>
+  </div>
+</div>
+
+<!-- Shipping -->
+<div class="screen">
+  <div class="header">2. Shipping</div>
+  <div class="content">
+    <div class="section input">Full Name</div>
+    <div class="section input">Address</div>
+    <div class="section input">City & ZIP</div>
+    <div class="section input">Phone Number</div>
+    <div class="button">Continue to Payment</div>
+  </div>
+</div>
+
+<!-- Payment -->
+<div class="screen">
+  <div class="header">3. Payment</div>
+  <div class="content">
+    <div class="section input">Card Number</div>
+    <div class="section input">Expiry Date</div>
+    <div class="section input">CVV</div>
+    <div class="section summary">Final Order Summary</div>
+    <div class="button">Place Order</div>
+  </div>
+</div>
+
+<!-- Confirmation -->
+<div class="screen">
+  <div class="header">4. Confirmation</div>
+  <div class="content" style="text-align:center;">
+    <div class="success"></div>
+    <h2>Order Confirmed</h2>
+    <p style="margin-top:10px;color:#64748b;">
+      Thank you for your purchase.
+    </p>
+    <div class="button" style="margin-top:40px;">
+      Track Order
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
