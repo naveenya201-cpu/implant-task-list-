@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard Wireframe</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter, Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    display:grid;
+    grid-template-columns:260px 1fr;
+    height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+    background:#1e293b;
+    color:white;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.logo{
+    height:60px;
+    border:2px dashed rgba(255,255,255,.4);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.nav-item{
+    height:48px;
+    border:2px dashed rgba(255,255,255,.4);
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Main */
+.main{
+    display:flex;
+    flex-direction:column;
+}
+
+/* Header */
+.header{
+    height:80px;
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 24px;
+}
+
+.search{
+    width:300px;
+    height:44px;
+    border:2px dashed #cbd5e1;
+    border-radius:10px;
+}
+
+.profile{
+    width:120px;
+    height:44px;
+    border:2px dashed #cbd5e1;
+    border-radius:10px;
+}
+
+/* Content */
+.content{
+    padding:24px;
+    display:grid;
+    gap:24px;
+}
+
+/* KPI Cards */
+.kpis{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    border-top:5px solid #3b82f6;
+    min-height:120px;
+}
+
+.placeholder{
+    height:100%;
+    border:2px dashed #cbd5e1;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#64748b;
+}
+
+/* Analytics */
+.analytics{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.chart{
+    background:white;
+    height:320px;
+    border-radius:16px;
+    padding:20px;
+}
+
+.activity{
+    background:white;
+    height:320px;
+    border-radius:16px;
+    padding:20px;
+}
+
+/* Bottom */
+.bottom{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:20px;
+}
+
+.table{
+    background:white;
+    height:300px;
+    border-radius:16px;
+    padding:20px;
+}
+
+.panel{
+    background:white;
+    height:300px;
+    border-radius:16px;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="logo">LOGO</div>
+
+    <div class="nav-item">Dashboard</div>
+    <div class="nav-item">Users</div>
+    <div class="nav-item">Orders</div>
+    <div class="nav-item">Products</div>
+    <div class="nav-item">Reports</div>
+    <div class="nav-item">Settings</div>
+</aside>
+
+<!-- Main -->
+<main class="main">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="search">Search</div>
+        <div class="profile">Admin</div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <section class="content">
+
+        <!-- KPI Cards -->
+        <div class="kpis">
+            <div class="card">
+                <div class="placeholder">Revenue KPI</div>
+            </div>
+
+            <div class="card">
+                <div class="placeholder">Users KPI</div>
+            </div>
+
+            <div class="card">
+                <div class="placeholder">Orders KPI</div>
+            </div>
+
+            <div class="card">
+                <div class="placeholder">Conversion KPI</div>
+            </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="analytics">
+
+            <div class="chart">
+                <div class="placeholder">
+                    Analytics Chart Area
+                </div>
+            </div>
+
+            <div class="activity">
+                <div class="placeholder">
+                    Recent Activity Feed
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tables -->
+        <div class="bottom">
+
+            <div class="table">
+                <div class="placeholder">
+                    User / Order Management Table
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="placeholder">
+                    Notifications & Tasks
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
