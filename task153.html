@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Animations</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter, Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+}
+
+section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:60px;
+}
+
+.hero{
+    background:linear-gradient(
+        135deg,
+        #1e293b,
+        #0f172a
+    );
+}
+
+.card{
+    width:320px;
+    background:#1e293b;
+    padding:30px;
+    margin:20px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+p{
+    color:#94a3b8;
+}
+
+/* Initial Hidden State */
+.animate{
+    opacity:0;
+    transition:all .8s ease;
+}
+
+/* Fade Up */
+.fade-up{
+    transform:translateY(60px);
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Slide Left */
+.slide-left{
+    transform:translateX(-100px);
+}
+
+.slide-left.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* Slide Right */
+.slide-right{
+    transform:translateX(100px);
+}
+
+.slide-right.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* Zoom */
+.zoom{
+    transform:scale(.7);
+}
+
+.zoom.show{
+    opacity:1;
+    transform:scale(1);
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <h1 class="animate fade-up">
+        Scroll Down
+    </h1>
+
+    <p class="animate fade-up">
+        Watch elements animate into view.
+    </p>
+</section>
+
+<section>
+    <div class="card animate slide-left">
+        <h2>Slide Left</h2>
+        <p>Content enters from the left.</p>
+    </div>
+</section>
+
+<section>
+    <div class="card animate slide-right">
+        <h2>Slide Right</h2>
+        <p>Content enters from the right.</p>
+    </div>
+</section>
+
+<section>
+    <div class="card animate zoom">
+        <h2>Zoom In</h2>
+        <p>Content scales smoothly.</p>
+    </div>
+</section>
+
+<section>
+    <div class="card animate fade-up">
+        <h2>Fade Up</h2>
+        <p>Classic landing page animation.</p>
+    </div>
+</section>
+
+<script>
+const items =
+document.querySelectorAll(".animate");
+
+const observer =
+new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+
+    });
+
+},{
+    threshold:0.2
+});
+
+items.forEach(item=>{
+    observer.observe(item);
+});
+</script>
+
+</body>
+</html>
