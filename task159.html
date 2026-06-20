@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluid Auto Layout</title>
+
+<style>
+:root{
+    --bg:#0b1220;
+    --card:#111c33;
+    --text:#e5e7eb;
+    --muted:#94a3b8;
+    --accent:#60a5fa;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter, Arial, sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    padding:40px;
+}
+
+/* ===== FLUID AUTO LAYOUT GRID ===== */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:16px;
+    align-items:start;
+}
+
+/* ===== AUTO SIZING CARD ===== */
+.card{
+    background:var(--card);
+    border-radius:16px;
+    padding:16px;
+    transition:.35s ease;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    min-height:120px;
+}
+
+/* Hover expands WITHOUT breaking layout */
+.card:hover{
+    transform:scale(1.05);
+    z-index:2;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+/* variable height content = auto layout effect */
+.card.tall{
+    grid-row:span 2;
+}
+
+.card.wide{
+    grid-column:span 2;
+}
+
+/* text styling */
+.title{
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.desc{
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.4;
+}
+
+/* badge */
+.badge{
+    display:inline-block;
+    font-size:11px;
+    padding:4px 8px;
+    border-radius:20px;
+    background:rgba(96,165,250,.15);
+    color:var(--accent);
+    margin-bottom:10px;
+}
+
+/* animated glow edge */
+.card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:16px;
+    border:1px solid transparent;
+    transition:.4s;
+}
+
+.card:hover::after{
+    border-color:rgba(96,165,250,.4);
+}
+
+/* floating animation for “alive layout” */
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-4px);}
+}
+
+.card.float{
+    animation:float 4s ease-in-out infinite;
+}
+</style>
+</head>
+<body>
+
+<h1>Fluid Auto Layout</h1>
+<p style="color:#94a3b8;margin-bottom:20px;">
+Cards adapt, expand, and reflow like a living UI system.
+</p>
+
+<div class="grid">
+
+    <div class="card float">
+        <div class="badge">Insight</div>
+        <div class="title">Adaptive Card</div>
+        <div class="desc">
+            This card adjusts automatically based on content and hover state.
+        </div>
+    </div>
+
+    <div class="card tall">
+        <div class="badge">Report</div>
+        <div class="title">Analytics Panel</div>
+        <div class="desc">
+            Tall layout spans multiple rows like a dashboard widget.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="badge">Quick</div>
+        <div class="title">Shortcut Tile</div>
+        <div class="desc">
+            Compact auto layout block with minimal content.
+        </div>
+    </div>
+
+    <div class="card wide">
+        <div class="badge">Featured</div>
+        <div class="title">Wide Content Block</div>
+        <div class="desc">
+            This element spans multiple columns like a hero widget inside a grid system.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="badge">Live</div>
+        <div class="title">Status Card</div>
+        <div class="desc">
+            Real-time UI element that responds to layout changes.
+        </div>
+    </div>
+
+    <div class="card float">
+        <div class="badge">AI</div>
+        <div class="title">Smart Component</div>
+        <div class="desc">
+            Floating animation creates a dynamic, breathing interface.
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
