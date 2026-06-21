@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Button States Demo</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+  }
+
+  .btn {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  /* Hover */
+  .btn:hover {
+    background-color: #1d4ed8;
+  }
+
+  /* Pressed */
+  .btn:active {
+    background-color: #1e40af;
+    transform: scale(0.98);
+  }
+
+  /* Focused */
+  .btn:focus {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+  }
+
+  /* Disabled */
+  .btn:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+
+<h2>Button States Example</h2>
+
+<button class="btn">Primary Button</button>
+<br><br>
+
+<button class="btn" disabled>Disabled Button</button>
+
+</body>
+</html>
