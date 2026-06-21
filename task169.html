@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Assistant UI</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:350px;
+    background:#ffffff10;
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+    color:white;
+    box-shadow:0 8px 30px rgba(0,0,0,0.3);
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+.assistant-circle{
+    width:120px;
+    height:120px;
+    margin:20px auto;
+    border-radius:50%;
+    background:#38bdf8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:50px;
+    animation:pulse 2s infinite;
+}
+
+.listening{
+    animation:listen 1s infinite alternate;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
+}
+
+@keyframes listen{
+    from{
+        box-shadow:0 0 10px #38bdf8;
+    }
+    to{
+        box-shadow:0 0 40px #38bdf8;
+    }
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#38bdf8;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0ea5e9;
+}
+
+.status{
+    margin-top:15px;
+    color:#cbd5e1;
+}
+
+.response{
+    margin-top:20px;
+    background:#ffffff15;
+    padding:15px;
+    border-radius:12px;
+    min-height:60px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Voice Assistant</h1>
+
+    <div id="assistant" class="assistant-circle">
+        🎤
+    </div>
+
+    <button onclick="toggleListening()">
+        Start Listening
+    </button>
+
+    <div id="status" class="status">
+        Ready
+    </div>
+
+    <div id="response" class="response">
+        Assistant responses appear here.
+    </div>
+</div>
+
+<script>
+let listening = false;
+
+function toggleListening() {
+    const assistant = document.getElementById("assistant");
+    const status = document.getElementById("status");
+    const response = document.getElementById("response");
+
+    listening = !listening;
+
+    if(listening){
+        assistant.classList.add("listening");
+        status.textContent = "Listening...";
+        response.textContent = "How can I help you today?";
+    } else {
+        assistant.classList.remove("listening");
+        status.textContent = "Ready";
+        response.textContent = "Assistant stopped listening.";
+    }
+}
+</script>
+
+</body>
+</html>
