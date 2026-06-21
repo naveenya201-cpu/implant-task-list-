@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbot</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#0f172a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.chat-container{
+    width:400px;
+    height:700px;
+    background:#ffffff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    display:flex;
+    flex-direction:column;
+}
+
+.header{
+    background:#2563eb;
+    color:white;
+    padding:18px;
+    text-align:center;
+}
+
+.header h2{
+    margin-bottom:5px;
+}
+
+.status{
+    font-size:13px;
+    opacity:0.9;
+}
+
+.chat-area{
+    flex:1;
+    padding:15px;
+    overflow-y:auto;
+    background:#f8fafc;
+}
+
+.message{
+    max-width:80%;
+    padding:12px 15px;
+    border-radius:16px;
+    margin-bottom:12px;
+    line-height:1.4;
+}
+
+.bot{
+    background:#e2e8f0;
+    color:#111827;
+    align-self:flex-start;
+}
+
+.user{
+    background:#2563eb;
+    color:white;
+    margin-left:auto;
+}
+
+.typing{
+    display:inline-block;
+    padding:10px 14px;
+    background:#e2e8f0;
+    border-radius:16px;
+}
+
+.typing span{
+    animation:blink 1.4s infinite;
+    font-size:18px;
+}
+
+.typing span:nth-child(2){
+    animation-delay:0.2s;
+}
+
+.typing span:nth-child(3){
+    animation-delay:0.4s;
+}
+
+@keyframes blink{
+    0%,80%,100%{opacity:0.2;}
+    40%{opacity:1;}
+}
+
+.input-area{
+    display:flex;
+    padding:12px;
+    border-top:1px solid #ddd;
+    background:white;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:25px;
+    outline:none;
+}
+
+button{
+    margin-left:10px;
+    padding:12px 18px;
+    border:none;
+    border-radius:25px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+</style>
+</head>
+<body>
+
+<div class="chat-container">
+
+    <div class="header">
+        <h2>AI Assistant</h2>
+        <div class="status">● Online</div>
+    </div>
+
+    <div class="chat-area" id="chatArea">
+
+        <div class="message bot">
+            Hello! I'm your AI assistant. How can I help you today?
+        </div>
+
+    </div>
+
+    <div class="input-area">
+        <input
+            type="text"
+            id="userInput"
+            placeholder="Ask anything..."
+        >
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<script>
+function sendMessage() {
+
+    const input = document.getElementById("userInput");
+    const chatArea = document.getElementById("chatArea");
+
+    if(input.value.trim() === "") return;
+
+    // User message
+    const userMsg = document.createElement("div");
+    userMsg.className = "message user";
+    userMsg.textContent = input.value;
+    chatArea.appendChild(userMsg);
+
+    const question = input.value;
+    input.value = "";
+
+    // Typing indicator
+    const typing = document.createElement("div");
+    typing.className = "typing";
+    typing.innerHTML =
+        "<span>•</span><span>•</span><span>•</span>";
+    chatArea.appendChild(typing);
+
+    chatArea.scrollTop = chatArea.scrollHeight;
+
+    // Simulated AI response
+    setTimeout(() => {
+        typing.remove();
+
+        const botMsg = document.createElement("div");
+        botMsg.className = "message bot";
+        botMsg.textContent =
+            "You said: " + question +
+            ". Connect this UI to an AI API for real responses.";
+        chatArea.appendChild(botMsg);
+
+        chatArea.scrollTop = chatArea.scrollHeight;
+    }, 1200);
+}
+
+// Press Enter to send
+document.getElementById("userInput")
+.addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        sendMessage();
+    }
+});
+</script>
+
+</body>
+</html>
