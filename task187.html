@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #1e2a38;
+      color: white;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      color: #4db8ff;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ddd;
+      text-decoration: none;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+
+    .sidebar a:hover {
+      background: #4db8ff;
+      color: #000;
+    }
+
+    /* Main */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Topbar */
+    .topbar {
+      background: white;
+      padding: 15px 20px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .search {
+      padding: 8px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin: 0;
+      color: #1e2a38;
+    }
+
+    .card p {
+      font-size: 22px;
+      font-weight: bold;
+      color: #4db8ff;
+      margin-top: 10px;
+    }
+
+    /* Analytics Section */
+    .analytics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 0 20px 20px;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Simple Bar Chart */
+    .bar {
+      height: 15px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: #4db8ff;
+    }
+
+    .label {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>BizDash</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Revenue</a>
+    <a href="#">Users</a>
+    <a href="#">Reports</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <h3>Analytics Dashboard</h3>
+      <input class="search" type="text" placeholder="Search reports...">
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="cards">
+      <div class="card">
+        <h3>Revenue</h3>
+        <p>₹12.5L</p>
+      </div>
+
+      <div class="card">
+        <h3>Users</h3>
+        <p>8,240</p>
+      </div>
+
+      <div class="card">
+        <h3>Sales</h3>
+        <p>1,340</p>
+      </div>
+
+      <div class="card">
+        <h3>Growth</h3>
+        <p>24%</p>
+      </div>
+    </div>
+
+    <!-- Analytics -->
+    <div class="analytics">
+
+      <!-- Chart -->
+      <div class="box">
+        <h3>Monthly Revenue</h3>
+
+        <div class="label">Jan</div>
+        <div class="bar"><div class="fill" style="width: 60%"></div></div>
+
+        <div class="label">Feb</div>
+        <div class="bar"><div class="fill" style="width: 40%"></div></div>
+
+        <div class="label">Mar</div>
+        <div class="bar"><div class="fill" style="width: 75%"></div></div>
+
+        <div class="label">Apr</div>
+        <div class="bar"><div class="fill" style="width: 55%"></div></div>
+      </div>
+
+      <!-- Summary -->
+      <div class="box">
+        <h3>Performance Summary</h3>
+        <p>
+          Your business is showing steady growth with improved user engagement
+          and increasing monthly revenue trends.
+        </p>
+
+        <p><b>Top Performing Sector:</b> E-commerce</p>
+        <p><b>Conversion Rate:</b> 3.8%</p>
+        <p><b>Customer Retention:</b> 72%</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
