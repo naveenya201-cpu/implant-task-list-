@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aviation Training Academy</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0b1d3a;
+      color: white;
+      padding: 15px 30px;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 22px;
+      color: #00c2ff;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .navbar a:hover {
+      color: #00c2ff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(to right, #0b1d3a, #004e92);
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      border: none;
+      background: #00c2ff;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Courses */
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 0 30px 40px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #0b1d3a;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Instructors */
+    .instructors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 0 30px 40px;
+    }
+
+    .instructor {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #00c2ff;
+      margin: 0 auto 10px;
+    }
+
+    /* Contact */
+    .contact {
+      background: #0b1d3a;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .contact button {
+      padding: 10px 20px;
+      background: #00c2ff;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>SkyWings Academy</h1>
+    <div>
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Instructors</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h2>Become a Certified Pilot</h2>
+    <p>Professional aviation training for future pilots and aviation engineers</p>
+    <button>Enroll Now</button>
+  </div>
+
+  <!-- Courses -->
+  <div class="section-title">Aviation Courses</div>
+
+  <div class="courses">
+    <div class="card">
+      <h3>Private Pilot License</h3>
+      <p>Learn basic flying skills and aircraft control.</p>
+    </div>
+
+    <div class="card">
+      <h3>Commercial Pilot Training</h3>
+      <p>Advanced training for professional aviation careers.</p>
+    </div>
+
+    <div class="card">
+      <h3>Aircraft Maintenance</h3>
+      <p>Understand aircraft systems and maintenance techniques.</p>
+    </div>
+  </div>
+
+  <!-- Instructors -->
+  <div class="section-title">Our Instructors</div>
+
+  <div class="instructors">
+    <div class="instructor">
+      <div class="avatar"></div>
+      <h4>Captain John</h4>
+      <p>Flight Instructor</p>
+    </div>
+
+    <div class="instructor">
+      <div class="avatar"></div>
+      <h4>Sarah Lee</h4>
+      <p>Aviation Engineer</p>
+    </div>
+
+    <div class="instructor">
+      <div class="avatar"></div>
+      <h4>Mark Davis</h4>
+      <p>Simulator Trainer</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact">
+    <h2>Contact Us</h2>
+    <input type="text" placeholder="Your Name"><br>
+    <input type="email" placeholder="Your Email"><br>
+    <textarea rows="4" placeholder="Your Message"></textarea><br>
+    <button>Send Message</button>
+  </div>
+
+</body>
+</html>
