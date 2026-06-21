@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT Device Dashboard</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f4f6f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .dashboard {
+        width: 400px;
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        background: #eef3ff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .value {
+        font-size: 28px;
+        font-weight: bold;
+        color: #0066cc;
+        margin-top: 5px;
+    }
+
+    .status {
+        font-size: 20px;
+        font-weight: bold;
+        color: green;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #0066cc;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #004d99;
+    }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+    <h1>IoT Dashboard</h1>
+
+    <div class="card">
+        <h3>Device Status</h3>
+        <div id="deviceStatus" class="status">ON</div>
+    </div>
+
+    <div class="card">
+        <h3>Temperature</h3>
+        <div id="temperature" class="value">25°C</div>
+    </div>
+
+    <div class="card">
+        <h3>Humidity</h3>
+        <div id="humidity" class="value">60%</div>
+    </div>
+
+    <button onclick="toggleDevice()">Turn OFF</button>
+</div>
+
+<script>
+    let deviceOn = true;
+
+    function toggleDevice() {
+        deviceOn = !deviceOn;
+
+        const status = document.getElementById("deviceStatus");
+        const button = document.querySelector("button");
+
+        if (deviceOn) {
+            status.textContent = "ON";
+            status.style.color = "green";
+            button.textContent = "Turn OFF";
+        } else {
+            status.textContent = "OFF";
+            status.style.color = "red";
+            button.textContent = "Turn ON";
+        }
+    }
+
+    // Simulate live sensor data
+    setInterval(() => {
+        const temp = (20 + Math.random() * 10).toFixed(1);
+        const hum = (50 + Math.random() * 20).toFixed(0);
+
+        document.getElementById("temperature").textContent = temp + "°C";
+        document.getElementById("humidity").textContent = hum + "%";
+    }, 3000);
+</script>
+
+</body>
+</html>
