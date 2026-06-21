@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LMS Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #ffffff;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 20px;
+    }
+
+    .menu a {
+      display: block;
+      padding: 10px;
+      margin: 5px 0;
+      text-decoration: none;
+      color: #333;
+      border-radius: 5px;
+    }
+
+    .menu a:hover {
+      background: #007bff;
+      color: white;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top bar */
+    .topbar {
+      background: white;
+      padding: 15px 20px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .search {
+      padding: 8px;
+      width: 250px;
+    }
+
+    /* Cards */
+    .content {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .progress {
+      height: 8px;
+      background: #ddd;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #007bff;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px;
+      background: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>LMS</h2>
+    <div class="menu">
+      <a href="#">Dashboard</a>
+      <a href="#">Courses</a>
+      <a href="#">Assignments</a>
+      <a href="#">Profile</a>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <h3>Dashboard</h3>
+      <input class="search" type="text" placeholder="Search courses...">
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+      <div class="card">
+        <h4>HTML Basics</h4>
+        <p>10 Lessons</p>
+        <div class="progress">
+          <div class="progress-bar" style="width: 70%;"></div>
+        </div>
+        <button>Continue</button>
+      </div>
+
+      <div class="card">
+        <h4>CSS Fundamentals</h4>
+        <p>8 Lessons</p>
+        <div class="progress">
+          <div class="progress-bar" style="width: 40%;"></div>
+        </div>
+        <button>Continue</button>
+      </div>
+
+      <div class="card">
+        <h4>JavaScript Basics</h4>
+        <p>12 Lessons</p>
+        <div class="progress">
+          <div class="progress-bar" style="width: 60%;"></div>
+        </div>
+        <button>Continue</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
