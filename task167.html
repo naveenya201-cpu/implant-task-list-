@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smartwatch UI</title>
+    <style>
+        body {
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .watch {
+            width: 250px;
+            height: 300px;
+            background: #000;
+            border-radius: 40px;
+            border: 8px solid #555;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .time {
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .date {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .card {
+            text-align: center;
+            background: #111;
+            padding: 10px;
+            border-radius: 12px;
+            width: 45%;
+        }
+
+        .steps {
+            color: #00e676;
+        }
+
+        .heart {
+            color: #ff5252;
+        }
+    </style>
+</head>
+<body>
+
+<div class="watch">
+    <div class="time" id="clock">12:00</div>
+    <div class="date">Smart Watch</div>
+
+    <div class="stats">
+        <div class="card">
+            <div class="steps">👟</div>
+            <h3>8,542</h3>
+            <small>Steps</small>
+        </div>
+
+        <div class="card">
+            <div class="heart">❤️</div>
+            <h3>72</h3>
+            <small>BPM</small>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+    document.getElementById('clock').textContent = time;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
