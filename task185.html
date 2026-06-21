@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SunPower Solar</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f9f6;
+      color: #222;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: #0b3d2e;
+      color: white;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      color: #ffd84d;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .navbar a:hover {
+      color: #ffd84d;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(to right, #0b3d2e, #1b6b4a);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      opacity: 0.9;
+    }
+
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #ffd84d;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Section Title */
+    .title {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 0 30px 40px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #0b3d2e;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 0 30px 40px;
+    }
+
+    .project {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .project img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .project p {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contact {
+      background: #0b3d2e;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .contact button {
+      padding: 10px 20px;
+      background: #ffd84d;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>SunPower</h1>
+    <div>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h2>Power Your Future With Solar Energy</h2>
+    <p>Clean, renewable and affordable energy solutions for homes & businesses</p>
+    <button>Get Free Quote</button>
+  </div>
+
+  <!-- Services -->
+  <div class="title">Our Services</div>
+
+  <div class="services">
+    <div class="card">
+      <h3>Solar Installation</h3>
+      <p>Complete rooftop solar panel installation for homes.</p>
+    </div>
+
+    <div class="card">
+      <h3>Maintenance</h3>
+      <p>Regular maintenance for maximum efficiency.</p>
+    </div>
+
+    <div class="card">
+      <h3>Commercial Solar</h3>
+      <p>Large-scale solar solutions for industries.</p>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <div class="title">Our Projects</div>
+
+  <div class="projects">
+    <div class="project">
+      <img src="https://source.unsplash.com/400x300/?solar,roof" />
+      <p>Residential rooftop solar installation</p>
+    </div>
+
+    <div class="project">
+      <img src="https://source.unsplash.com/400x300/?solar,panels" />
+      <p>Industrial solar farm project</p>
+    </div>
+
+    <div class="project">
+      <img src="https://source.unsplash.com/400x300/?renewable,energy" />
+      <p>Hybrid renewable energy system</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact">
+    <h2>Contact Us</h2>
+    <input type="text" placeholder="Your Name"><br>
+    <input type="email" placeholder="Your Email"><br>
+    <textarea rows="4" placeholder="Your Message"></textarea><br>
+    <button>Send Message</button>
+  </div>
+
+</body>
+</html>
