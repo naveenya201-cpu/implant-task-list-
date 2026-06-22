@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Wallet</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#eef2ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.phone{
+    width:380px;
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.header{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    padding:30px 25px;
+}
+
+.header h2{
+    font-size:26px;
+}
+
+.header p{
+    opacity:.8;
+    margin-top:5px;
+}
+
+.balance-card{
+    margin-top:20px;
+    background:rgba(255,255,255,.15);
+    padding:20px;
+    border-radius:18px;
+    backdrop-filter:blur(10px);
+}
+
+.balance-label{
+    font-size:14px;
+    opacity:.8;
+}
+
+.balance{
+    font-size:34px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.card-number{
+    margin-top:15px;
+    letter-spacing:3px;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    padding:20px;
+}
+
+.action-btn{
+    background:#f3f4f6;
+    text-align:center;
+    padding:15px 8px;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.action-btn:hover{
+    background:#e0e7ff;
+    transform:translateY(-3px);
+}
+
+.action-icon{
+    font-size:24px;
+}
+
+.action-text{
+    font-size:13px;
+    margin-top:8px;
+}
+
+.section{
+    padding:0 20px;
+}
+
+.section h3{
+    margin-bottom:15px;
+}
+
+.transaction{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f8fafc;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:12px;
+}
+
+.left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#e0e7ff;
+    font-size:20px;
+}
+
+.name{
+    font-weight:600;
+}
+
+.time{
+    font-size:12px;
+    color:#64748b;
+}
+
+.amount{
+    font-weight:bold;
+}
+
+.credit{
+    color:#16a34a;
+}
+
+.debit{
+    color:#dc2626;
+}
+
+.bottom-nav{
+    display:flex;
+    justify-content:space-around;
+    padding:18px;
+    background:white;
+    border-top:1px solid #e5e7eb;
+    margin-top:20px;
+}
+
+.nav-item{
+    text-align:center;
+    color:#64748b;
+    cursor:pointer;
+}
+
+.active{
+    color:#4f46e5;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+    <div class="header">
+        <h2>My Wallet</h2>
+        <p>Welcome Back</p>
+
+        <div class="balance-card">
+            <div class="balance-label">Available Balance</div>
+            <div class="balance">₹24,850.00</div>
+            <div class="card-number">**** **** **** 4521</div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <div class="action-btn" onclick="action('Send Money')">
+            <div class="action-icon">💸</div>
+            <div class="action-text">Send</div>
+        </div>
+
+        <div class="action-btn" onclick="action('Receive Money')">
+            <div class="action-icon">📥</div>
+            <div class="action-text">Receive</div>
+        </div>
+
+        <div class="action-btn" onclick="action('Pay Bills')">
+            <div class="action-icon">🧾</div>
+            <div class="action-text">Bills</div>
+        </div>
+
+        <div class="action-btn" onclick="action('Recharge')">
+            <div class="action-icon">📱</div>
+            <div class="action-text">Recharge</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Recent Transactions</h3>
+
+        <div class="transaction">
+            <div class="left">
+                <div class="icon">🛒</div>
+                <div>
+                    <div class="name">Amazon</div>
+                    <div class="time">Today • 10:45 AM</div>
+                </div>
+            </div>
+            <div class="amount debit">- ₹1,299</div>
+        </div>
+
+        <div class="transaction">
+            <div class="left">
+                <div class="icon">💰</div>
+                <div>
+                    <div class="name">Salary Credit</div>
+                    <div class="time">Yesterday</div>
+                </div>
+            </div>
+            <div class="amount credit">+ ₹35,000</div>
+        </div>
+
+        <div class="transaction">
+            <div class="left">
+                <div class="icon">🍔</div>
+                <div>
+                    <div class="name">Food Order</div>
+                    <div class="time">2 Days Ago</div>
+                </div>
+            </div>
+            <div class="amount debit">- ₹420</div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active">🏠<br>Home</div>
+        <div class="nav-item">💳<br>Cards</div>
+        <div class="nav-item">📊<br>Stats</div>
+        <div class="nav-item">👤<br>Profile</div>
+    </div>
+
+</div>
+
+<script>
+function action(type){
+    alert(type + " feature selected");
+}
+</script>
+
+</body>
+</html>
