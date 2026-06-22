@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare Appointment App</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+header h1{
+    color:#1e88e5;
+}
+
+.card{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    background:#1e88e5;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1565c0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+table th, table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+table th{
+    background:#1e88e5;
+    color:white;
+}
+
+.cancel-btn{
+    background:#e53935;
+}
+
+.cancel-btn:hover{
+    background:#c62828;
+}
+
+.success{
+    color:green;
+    margin-top:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+    <h1>Healthcare Appointment App</h1>
+    <p>Book appointments with doctors</p>
+</header>
+
+<div class="card">
+    <h2>Book Appointment</h2>
+
+    <div class="form-group">
+        <label>Patient Name</label>
+        <input type="text" id="patientName">
+    </div>
+
+    <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="phone">
+    </div>
+
+    <div class="form-group">
+        <label>Select Doctor</label>
+        <select id="doctor">
+            <option>Dr. Smith - Cardiologist</option>
+            <option>Dr. Johnson - Dermatologist</option>
+            <option>Dr. Brown - Neurologist</option>
+            <option>Dr. Wilson - Pediatrician</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="date">
+    </div>
+
+    <div class="form-group">
+        <label>Time</label>
+        <input type="time" id="time">
+    </div>
+
+    <div class="form-group">
+        <label>Symptoms / Notes</label>
+        <textarea id="notes" rows="3"></textarea>
+    </div>
+
+    <button onclick="bookAppointment()">Book Appointment</button>
+
+    <p id="message" class="success"></p>
+</div>
+
+<div class="card">
+    <h2>Appointments</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="appointmentTable"></tbody>
+    </table>
+</div>
+
+</div>
+
+<script>
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+function saveAppointments(){
+    localStorage.setItem(
+        "appointments",
+        JSON.stringify(appointments)
+    );
+}
+
+function bookAppointment(){
+
+    let patient = document.getElementById("patientName").value;
+    let phone = document.getElementById("phone").value;
+    let doctor = document.getElementById("doctor").value;
+    let date = document.getElementById("date").value;
+    let time = document.getElementById("time").value;
+    let notes = document.getElementById("notes").value;
+
+    if(!patient || !phone || !date || !time){
+        alert("Please fill all required fields");
+        return;
+    }
+
+    appointments.push({
+        patient,
+        phone,
+        doctor,
+        date,
+        time,
+        notes
+    });
+
+    saveAppointments();
+    renderAppointments();
+
+    document.getElementById("message").innerText =
+        "Appointment booked successfully!";
+
+    document.getElementById("patientName").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("time").value = "";
+    document.getElementById("notes").value = "";
+}
+
+function renderAppointments(){
+
+    let table =
+        document.getElementById("appointmentTable");
+
+    table.innerHTML = "";
+
+    appointments.forEach((appt,index)=>{
+
+        table.innerHTML += `
+        <tr>
+            <td>${appt.patient}</td>
+            <td>${appt.doctor}</td>
+            <td>${appt.date}</td>
+            <td>${appt.time}</td>
+            <td>
+                <button
+                    class="cancel-btn"
+                    onclick="deleteAppointment(${index})">
+                    Cancel
+                </button>
+            </td>
+        </tr>`;
+    });
+}
+
+function deleteAppointment(index){
+
+    if(confirm("Cancel this appointment?")){
+        appointments.splice(index,1);
+        saveAppointments();
+        renderAppointments();
+    }
+}
+
+renderAppointments();
+</script>
+
+</body>
+</html>
