@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#1e3c72,#2a5298);
+        color:white;
+        text-align:center;
+    }
+
+    .container{
+        max-width:600px;
+        padding:40px;
+    }
+
+    .error-code{
+        font-size:120px;
+        font-weight:700;
+        line-height:1;
+        text-shadow:0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .title{
+        font-size:32px;
+        margin:20px 0 10px;
+    }
+
+    .message{
+        font-size:18px;
+        color:#d9e6ff;
+        margin-bottom:30px;
+    }
+
+    .home-btn{
+        display:inline-block;
+        padding:14px 30px;
+        background:white;
+        color:#2a5298;
+        text-decoration:none;
+        border-radius:30px;
+        font-weight:600;
+        transition:0.3s ease;
+    }
+
+    .home-btn:hover{
+        transform:translateY(-3px);
+        box-shadow:0 8px 20px rgba(255,255,255,0.3);
+    }
+
+    .illustration{
+        font-size:70px;
+        margin-bottom:15px;
+    }
+
+    @media(max-width:600px){
+        .error-code{
+            font-size:90px;
+        }
+
+        .title{
+            font-size:26px;
+        }
+
+        .message{
+            font-size:16px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="illustration">🚀</div>
+    <div class="error-code">404</div>
+    <h1 class="title">Page Not Found</h1>
+    <p class="message">
+        Oops! The page you're looking for doesn't exist,
+        has been moved, or is temporarily unavailable.
+    </p>
+
+    <a href="/" class="home-btn">← Back to Home</a>
+</div>
+
+</body>
+</html>
