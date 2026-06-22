@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logistics Tracking System</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 800px;
+        margin: 40px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    .search-box {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    input {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 12px 20px;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #2980b9;
+    }
+
+    .result {
+        margin-top: 20px;
+        display: none;
+    }
+
+    .card {
+        border-left: 5px solid #3498db;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .status {
+        color: green;
+        font-weight: bold;
+    }
+
+    .timeline {
+        margin-top: 15px;
+    }
+
+    .timeline li {
+        margin-bottom: 10px;
+    }
+
+    .error {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Logistics Tracking System</h1>
+
+    <div class="search-box">
+        <input type="text" id="trackingNo" placeholder="Enter Tracking Number">
+        <button onclick="trackPackage()">Track</button>
+    </div>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+const shipments = {
+    "TRK1001": {
+        customer: "Rahul Kumar",
+        origin: "Chennai",
+        destination: "Bangalore",
+        status: "In Transit",
+        history: [
+            "Package picked up - Chennai",
+            "Reached Distribution Center",
+            "Out for City Transfer"
+        ]
+    },
+
+    "TRK1002": {
+        customer: "Priya Sharma",
+        origin: "Mumbai",
+        destination: "Delhi",
+        status: "Delivered",
+        history: [
+            "Package picked up - Mumbai",
+            "Reached Delhi Hub",
+            "Out for Delivery",
+            "Delivered Successfully"
+        ]
+    }
+};
+
+function trackPackage() {
+    const trackingNo = document
+        .getElementById("trackingNo")
+        .value
+        .trim()
+        .toUpperCase();
+
+    const resultDiv = document.getElementById("result");
+
+    if (shipments[trackingNo]) {
+        const shipment = shipments[trackingNo];
+
+        let historyHTML = "";
+        shipment.history.forEach(item => {
+            historyHTML += `<li>${item}</li>`;
+        });
+
+        resultDiv.style.display = "block";
+        resultDiv.innerHTML = `
+            <div class="card">
+                <h3>Tracking Number: ${trackingNo}</h3>
+                <p><strong>Customer:</strong> ${shipment.customer}</p>
+                <p><strong>Origin:</strong> ${shipment.origin}</p>
+                <p><strong>Destination:</strong> ${shipment.destination}</p>
+                <p><strong>Status:</strong>
+                    <span class="status">${shipment.status}</span>
+                </p>
+
+                <h4>Shipment History</h4>
+                <ul class="timeline">
+                    ${historyHTML}
+                </ul>
+            </div>
+        `;
+    } else {
+        resultDiv.style.display = "block";
+        resultDiv.innerHTML =
+            `<p class="error">Tracking number not found!</p>`;
+    }
+}
+</script>
+
+</body>
+</html>
